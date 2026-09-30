@@ -159,12 +159,12 @@
             <div id="game-lyrics-view" class="lyrics-box"></div>
             
             <textarea id="player-input" class="main-textarea" rows="2" 
-                placeholder="在此輸入答案 (依順序)...&#10;桌機支援 Ctrl + Enter 送出" 
+                placeholder="在此輸入答案 (忽略空格、換行及大小寫)...&#10;桌機支援 Ctrl + Enter 送出" 
                 oninput="App.autoResize(this)"></textarea>
             
             <div class="action-row">
-                <button class="btn btn-aux" onclick="Logic.skip()">放棄跳過</button>
-                <button class="btn btn-aux" onclick="Logic.getHint()">提示字元</button>
+                <button class="btn btn-aux" onclick="Logic.skip()">跳過</button>
+                <button class="btn btn-aux" onclick="Logic.getHint()">提示</button>
                 <button class="btn btn-main" onclick="Logic.submit()">確定送出</button>
             </div>
         </div>
@@ -230,15 +230,7 @@
 <script>
 const INITIAL_SONGS = [
     {
-        id: "s1", title: "晴天", artist: "周杰倫", lang: "zh",
-        lyrics: ["故事的小黃花", "從出生那年就飄著", "童年的盪鞦韆", "隨記憶一直晃到現在", "Re So So Si Do Si La", "So La Si Si Si Si La Si La So", "吹著前奏望著天空", "我想起花瓣試著掉落"]
-    },
-    {
-        id: "s2", title: "Shape of You", artist: "Ed Sheeran", lang: "en",
-        lyrics: ["The club isn't the best place to find a lover", "So the bar is where I go", "Me and my friends at the table doing shots", "Drinking fast and then we talk slow"]
-    },
-    {
-        id: "s3", title: "Lemon", artist: "米津玄師", lang: "ja",
+        id: "s1", title: "Lemon", artist: "米津玄師", lang: "ja",
         lyrics: ["夢ならばどれほどよかったでしょう", "未だにあなたのことを夢にみる", "忘れた物を取りに帰るように", "古びた思い出の埃を払う"]
     }
 ];
