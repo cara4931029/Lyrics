@@ -95,29 +95,6 @@
         }
     </style>
 </head>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('題庫範例.json')
-      .then(response => {
-        if (!response.ok) throw new Error('無法讀取 JSON');
-        return response.json();
-      })
-      .then(data => {
-        const fileInput = document.querySelector('input[type="file"]');
-        if (fileInput) {
-          const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
-          const file = new File([blob], '題庫範例.json', { type: 'application/json' });
-          const container = new DataTransfer();
-          container.items.add(file);
-          fileInput.files = container.files;
-          fileInput.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      })
-      .catch(err => {
-        console.warn('自動載入失敗：', err);
-      });
-  });
-</script>
 <body>
 
 <div class="container">
@@ -159,7 +136,7 @@
             <div id="game-lyrics-view" class="lyrics-box"></div>
             
             <textarea id="player-input" class="main-textarea" rows="2" 
-                placeholder="在此輸入答案 (忽略空格、換行及大小寫)...&#10;桌機支援 Ctrl + Enter 送出" 
+                placeholder="在此輸入答案 (可忽視空格、換行及大小寫)...&#10;桌機支援 Ctrl + Enter 送出" 
                 oninput="App.autoResize(this)"></textarea>
             
             <div class="action-row">
@@ -390,6 +367,49 @@ const Data = {
             }, 50);
         };
         if(i.files[0]) r.readAsText(i.files[0]);
+    },
+    // 自動抓取同目錄下的 題庫範例.json
+    loadExternalBank: async () => {
+        try {
+            const filename = '題庫範例.json';
+            const res = await fetch('./' + encodeURIComponent(filename), { cache: 'no-cache' });
+            if (!res.ok) return;
+            const text = await res.text();
+            const lastRaw = localStorage.getItem('ly_v17_remote_raw');
+            const hasLocalSongs = !!localStorage.getItem('ly_v17_s');
+
+            // 第一次進入網站，或 GitHub 上的 題庫範例.json 內容有更新時載入
+            if (!hasLocalSongs || text !== lastRaw) {
+                const d = JSON.parse(text);
+                let loadedSongs = null;
+                let loadedPlaylists = null;
+
+                if (Array.isArray(d)) {
+                    loadedSongs = d;
+                } else if (d && typeof d === 'object') {
+                    if (Array.isArray(d.s)) loadedSongs = d.s;
+                    else if (Array.isArray(d.songs)) loadedSongs = d.songs;
+
+                    if (Array.isArray(d.p)) loadedPlaylists = d.p;
+                    else if (Array.isArray(d.playlists)) loadedPlaylists = d.playlists;
+                }
+
+                if (loadedSongs && loadedSongs.length > 0) {
+                    loadedSongs.forEach((s, idx) => {
+                        if (!s.id) s.id = 's_ext_' + (idx + 1);
+                    });
+                    Data.saveSongs(loadedSongs);
+                }
+
+                if (loadedPlaylists && loadedPlaylists.length > 0) {
+                    Data.savePlaylists(loadedPlaylists);
+                }
+
+                localStorage.setItem('ly_v17_remote_raw', text);
+            }
+        } catch (err) {
+            console.log("未讀取到同目錄題庫範例.json（本地離線直接以 file:// 開啟會受限於瀏覽器安全政策，部署於 GitHub 後即可正常自動抓取）：", err);
+        }
     }
 };
 
@@ -489,7 +509,8 @@ const Logic = {
             localStorage.removeItem('ly_v17_ag');
         }
     },
-    init: () => { 
+    init: async () => { 
+        await Data.loadExternalBank();
         Data.ensureLangPlaylists(Data.getPlaylists());
         const songs = Data.getSongs();
         songs.forEach(s => { if (s.lang) Data.syncSongWithLangPlaylists(s.id, s.lang); });
