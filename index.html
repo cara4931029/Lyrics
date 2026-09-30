@@ -95,6 +95,29 @@
         }
     </style>
 </head>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('題庫範例.json')
+      .then(response => {
+        if (!response.ok) throw new Error('無法讀取 JSON');
+        return response.json();
+      })
+      .then(data => {
+        const fileInput = document.querySelector('input[type="file"]');
+        if (fileInput) {
+          const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+          const file = new File([blob], 'questions.json', { type: 'application/json' });
+          const container = new DataTransfer();
+          container.items.add(file);
+          fileInput.files = container.files;
+          fileInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      })
+      .catch(err => {
+        console.warn('自動載入失敗：', err);
+      });
+  });
+</script>
 <body>
 
 <div class="container">
