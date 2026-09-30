@@ -106,7 +106,7 @@
         const fileInput = document.querySelector('input[type="file"]');
         if (fileInput) {
           const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
-          const file = new File([blob], 'questions.json', { type: 'application/json' });
+          const file = new File([blob], '題庫範例.json', { type: 'application/json' });
           const container = new DataTransfer();
           container.items.add(file);
           fileInput.files = container.files;
