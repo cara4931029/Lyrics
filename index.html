@@ -113,6 +113,7 @@
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
                 <span style="font-size:0.9rem;color:#aaa">選擇出題範圍 (可多選)：</span>
                 <span style="font-size:0.8rem">
+                    <a href="javascript:void(0)" onclick="Data.loadQuestionJson(true)" style="color:var(--secondary-color);text-decoration:none;margin-right:12px">🔄 重新載入題庫</a>
                     <a href="javascript:void(0)" onclick="Logic.toggleAllRanges(true)" style="color:var(--primary-color);text-decoration:none;margin-right:10px">全選</a>
                     <a href="javascript:void(0)" onclick="Logic.toggleAllRanges(false)" style="color:#888;text-decoration:none">清空</a>
                 </span>
@@ -136,12 +137,12 @@
             <div id="game-lyrics-view" class="lyrics-box"></div>
             
             <textarea id="player-input" class="main-textarea" rows="2" 
-                placeholder="在此輸入答案 (可忽視空格、換行及大小寫)...&#10;桌機支援 Ctrl + Enter 送出" 
+                placeholder="在此輸入答案 (依順序)...&#10;桌機支援 Ctrl + Enter 送出" 
                 oninput="App.autoResize(this)"></textarea>
             
             <div class="action-row">
-                <button class="btn btn-aux" onclick="Logic.skip()">跳過</button>
-                <button class="btn btn-aux" onclick="Logic.getHint()">提示</button>
+                <button class="btn btn-aux" onclick="Logic.skip()">放棄跳過</button>
+                <button class="btn btn-aux" onclick="Logic.getHint()">提示字元</button>
                 <button class="btn btn-main" onclick="Logic.submit()">確定送出</button>
             </div>
         </div>
@@ -150,6 +151,7 @@
     <div id="view-editor" class="view">
         <div class="action-row" style="margin-bottom:15px">
             <button class="btn btn-main" onclick="Editor.openModal()">+ 新增歌曲</button>
+            <button class="btn btn-aux" onclick="Data.loadQuestionJson(true)">載入 question.json</button>
             <button class="btn btn-aux" onclick="Data.exportAll()">匯出</button>
             <button class="btn btn-aux" onclick="document.getElementById('import-file').click()">匯入</button>
         </div>
@@ -207,8 +209,16 @@
 <script>
 const INITIAL_SONGS = [
     {
-        id: "s1", title: "Lemon", artist: "米津玄師", lang: "ja",
-        lyrics: ["夢ならばどれほどよかったでしょう", "未だにあなたのことを夢にみる", "忘れた物を取りに帰るように", "古びた思い出の埃を払う"]
+        id: "s1", title: "晴天", artist: "周杰倫", lang: "zh",
+        lyrics: ["故事的小黃花", "從出生那年就飄著", "童年的盪鞦韆", "隨記憶一直晃到現在", "Re So So Si Do Si La", "So La Si Si Si Si La Si La So", "吹著前奏望著天空", "我想起花瓣試著掉落"]
+    },
+    {
+        id: "s2", title: "Shape of You", artist: "Ed Sheeran", lang: "en",
+        lyrics: ["The club isn't the best place to find a lover", "So the bar is where I go", "Me and my friends at the table doing shots", "Drinking fast and then we talk slow"]
+    },
+    {
+        id: "s3", title: "Lemon", artist: "米津玄師", lang: "ja",
+        lyrics: ["夢ならばどれほどよかったでしょう", "未だにあなたのことを夢にみる", "忘れた物を取りに歸るように", "古びた思い出の埃を払う"]
     }
 ];
 
@@ -361,55 +371,122 @@ const Data = {
             setTimeout(() => {
                 try {
                     const d = JSON.parse(e.target.result);
-                    if(d.s) Data.saveSongs(d.s); if(d.p) Data.savePlaylists(d.p); if(d.st) Data.saveStats(d.st);
-                    location.reload();
+                    const { songs, playlists } = Data.parseRawData(d);
+                    if (songs && songs.length > 0) {
+                        Data.saveSongs(songs);
+                        if (playlists && playlists.length > 0) Data.savePlaylists(playlists);
+                        if (d.st) Data.saveStats(d.st);
+                        localStorage.removeItem('ly_v17_ag');
+                        alert(`成功匯入 ${songs.length} 首歌！`);
+                        location.reload();
+                    } else {
+                        alert("匯入失敗: 找不到有效歌曲資料");
+                    }
                 } catch(err){ alert("匯入失敗: 檔案格式錯誤"); }
             }, 50);
         };
         if(i.files[0]) r.readAsText(i.files[0]);
     },
-    // 自動抓取同目錄下的 題庫範例.json
-    loadExternalBank: async () => {
+
+    // 容錯解析各種不同結構的題庫 JSON
+    parseRawData: (d) => {
+        let rawSongs = [];
+        let rawPlaylists = [];
+
+        if (Array.isArray(d)) {
+            rawSongs = d;
+        } else if (d && typeof d === 'object') {
+            if (Array.isArray(d.s)) rawSongs = d.s;
+            else if (Array.isArray(d.songs)) rawSongs = d.songs;
+            else if (Array.isArray(d.data)) rawSongs = d.data;
+
+            if (Array.isArray(d.p)) rawPlaylists = d.p;
+            else if (Array.isArray(d.playlists)) rawPlaylists = d.playlists;
+        }
+
+        const songs = rawSongs.map((s, idx) => {
+            const id = s.id ? String(s.id) : ('s_' + (idx + 1));
+            const title = String(s.title || s.name || s.song || s.songName || '無歌名').trim();
+            const artist = String(s.artist || s.singer || s.author || '未知歌手').trim();
+            const lang = s.lang || '';
+            
+            let lyrics = [];
+            const rawL = s.lyrics || s.lyric || s.content || s.words;
+            if (Array.isArray(rawL)) {
+                lyrics = rawL.map(l => String(l).trim()).filter(l => l.length > 0);
+            } else if (typeof rawL === 'string') {
+                lyrics = rawL.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+            }
+
+            return { id, title, artist, lang, lyrics };
+        }).filter(s => s.title && s.lyrics.length > 0);
+
+        return { songs, playlists: rawPlaylists };
+    },
+
+    // 自動與手動載入 question.json
+    loadQuestionJson: async (isManual = false) => {
         try {
-            const filename = '題庫範例.json';
-            const res = await fetch('./' + encodeURIComponent(filename), { cache: 'no-cache' });
-            if (!res.ok) return;
-            const text = await res.text();
-            const lastRaw = localStorage.getItem('ly_v17_remote_raw');
+            // 加入時間戳記避免被 GitHub / 瀏覽器快取住
+            const res = await fetch('question.json?t=' + Date.now(), { cache: 'no-cache' });
+            if (!res.ok) {
+                if (isManual) alert(`載入失敗：找不到 question.json (HTTP 狀態碼: ${res.status})\n請確認 question.json 與本 html 放在同一資料夾，且檔名全為小寫。`);
+                return false;
+            }
+            let text = await res.text();
+            text = text.replace(/^\uFEFF/, '').trim(); // 移除微軟 UTF-8 BOM 避免 JSON 解析報錯
+            const lastHash = localStorage.getItem('ly_v17_bank_hash');
             const hasLocalSongs = !!localStorage.getItem('ly_v17_s');
 
-            // 第一次進入網站，或 GitHub 上的 題庫範例.json 內容有更新時載入
-            if (!hasLocalSongs || text !== lastRaw) {
-                const d = JSON.parse(text);
-                let loadedSongs = null;
-                let loadedPlaylists = null;
+            // 手動點擊、初次造訪、或線上檔案有改動時進行載入
+            if (isManual || !hasLocalSongs || text !== lastHash) {
+                const parsed = JSON.parse(text);
+                const { songs, playlists } = Data.parseRawData(parsed);
 
-                if (Array.isArray(d)) {
-                    loadedSongs = d;
-                } else if (d && typeof d === 'object') {
-                    if (Array.isArray(d.s)) loadedSongs = d.s;
-                    else if (Array.isArray(d.songs)) loadedSongs = d.songs;
-
-                    if (Array.isArray(d.p)) loadedPlaylists = d.p;
-                    else if (Array.isArray(d.playlists)) loadedPlaylists = d.playlists;
+                if (!songs || songs.length === 0) {
+                    if (isManual) alert("載入失敗：question.json 內未偵測到任何歌曲！\n請檢查 JSON 格式是否包含歌名 (title) 與歌詞 (lyrics)。");
+                    return false;
                 }
 
-                if (loadedSongs && loadedSongs.length > 0) {
-                    loadedSongs.forEach((s, idx) => {
-                        if (!s.id) s.id = 's_ext_' + (idx + 1);
-                    });
-                    Data.saveSongs(loadedSongs);
+                Data.saveSongs(songs);
+                if (playlists && playlists.length > 0) {
+                    Data.savePlaylists(playlists);
                 }
 
-                if (loadedPlaylists && loadedPlaylists.length > 0) {
-                    Data.savePlaylists(loadedPlaylists);
-                }
+                localStorage.setItem('ly_v17_bank_hash', text);
+                localStorage.removeItem('ly_v17_ag'); // 清除舊進度，避免卡在舊歌中
 
-                localStorage.setItem('ly_v17_remote_raw', text);
+                // 重置抽題進度
+                const st = Data.getStats();
+                st.playedInRound = [];
+                st.usedMap = {};
+                Data.saveStats(st);
+
+                Data.ensureLangPlaylists(Data.getPlaylists());
+                songs.forEach(s => { if (s.lang) Data.syncSongWithLangPlaylists(s.id, s.lang); });
+                
+                Logic.state.selectedRanges = ['__all__'];
+                Logic.refreshPlaylistSelect();
+
+                if (document.getElementById('view-editor').classList.contains('active')) Editor.render();
+                if (document.getElementById('view-playlists').classList.contains('active')) Playlists.render();
+
+                if (isManual) {
+                    alert(`🎉 成功載入題庫！共載入 ${songs.length} 首歌。`);
+                }
+                return true;
             }
         } catch (err) {
-            console.log("未讀取到同目錄題庫範例.json（本地離線直接以 file:// 開啟會受限於瀏覽器安全政策，部署於 GitHub 後即可正常自動抓取）：", err);
+            console.warn("讀取 question.json 失敗：", err);
+            if (isManual) {
+                if (window.location.protocol === 'file:') {
+                    alert("⚠️ 載入失敗：偵測到您目前是在電腦本機直接點兩下打開檔案 (file://)。\n\n瀏覽器安全政策會阻擋本機直接以程式碼讀取同資料夾檔案。\n\n【建議解決辦法】\n1. 上傳至 GitHub Pages 上玩（在 https:// 下可完全正常自動抓取）。\n2. 若要在電腦本機離線遊玩，可到「題庫管理」點擊【匯入】按鈕直接選取 question.json 即可！");
+                } else {
+                    alert(`載入失敗：${err.message || err}`);
+                }
+            }
         }
+        return false;
     }
 };
 
@@ -510,7 +587,9 @@ const Logic = {
         }
     },
     init: async () => { 
-        await Data.loadExternalBank();
+        // 頁面啟動時自動載入同目錄下的 question.json
+        await Data.loadQuestionJson(false);
+
         Data.ensureLangPlaylists(Data.getPlaylists());
         const songs = Data.getSongs();
         songs.forEach(s => { if (s.lang) Data.syncSongWithLangPlaylists(s.id, s.lang); });
@@ -520,15 +599,22 @@ const Logic = {
         document.getElementById('player-input').onkeydown = (e) => {
             if (e.ctrlKey && e.key === 'Enter') { e.preventDefault(); Logic.submit(); }
         };
+
+        // 檢查儲存的進度是否仍有效
         try {
             const ag = JSON.parse(localStorage.getItem('ly_v17_ag'));
             if(ag && ag.isInGame && ag.state && ag.state.song){
-                Logic.state = ag.state;
-                document.getElementById('game-setup').style.display = 'none';
-                document.getElementById('game-play-area').style.display = 'block';
-                App.render(false);
-                const inputEl = document.getElementById('player-input');
-                if(inputEl){ inputEl.value = ag.inputValue || ""; App.autoResize(inputEl); }
+                const songStillExists = songs.some(s => s.id === ag.state.song.id);
+                if (songStillExists) {
+                    Logic.state = ag.state;
+                    document.getElementById('game-setup').style.display = 'none';
+                    document.getElementById('game-play-area').style.display = 'block';
+                    App.render(false);
+                    const inputEl = document.getElementById('player-input');
+                    if(inputEl){ inputEl.value = ag.inputValue || ""; App.autoResize(inputEl); }
+                } else {
+                    localStorage.removeItem('ly_v17_ag');
+                }
             }
         } catch(err){}
     },
@@ -599,15 +685,15 @@ const Logic = {
             Logic.state.selectedRanges = ['__all__'];
         }
 
-        // 1. 「所有歌曲」選項（獨立選項，不連動其他歌單勾選狀態，直接出題庫所有歌曲）
+        // 1. 「所有歌曲」選項
         const allChecked = Logic.state.selectedRanges.includes('__all__');
         const allLabel = document.createElement('label');
         allLabel.className = "multi-select-item";
         allLabel.style.borderBottom = "1px solid #444";
-        allLabel.innerHTML = `<input type="checkbox" value="__all__" ${allChecked ? 'checked' : ''} onchange="Logic.updateRangeSelection()"> <div><b>所有歌曲</b> <small style="color:#aaa">(${allSongs.length}首)</small></div>`;
+        allLabel.innerHTML = `<input type="checkbox" value="__all__" ${allChecked ? 'checked' : ''} onchange="Logic.updateRangeSelection()"> <div><b>所有歌曲</b> <small style="color:var(--secondary-color)">(${allSongs.length}首)</small></div>`;
         container.appendChild(allLabel);
 
-        // 2. 各個歌單選項（中英日已置頂在最前，其餘依自訂排序）
+        // 2. 各個歌單選項
         allPlaylists.forEach(p => {
             const isChecked = Logic.state.selectedRanges.includes(p.id);
             const label = document.createElement('label');
@@ -1019,7 +1105,7 @@ const Editor = {
         const pageSongs = filtered.slice(startIndex, startIndex + PAGE_SIZE);
 
         pageSongs.forEach(s => { 
-            const langLabel = s.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${s.lang==='zh'?'中':(s.lang==='en'?'英':'日')}</span>` : '';
+            const langLabel = s.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${s.lang==='zh'?'中':(song.lang==='en'?'英':'日')}</span>` : '';
             const isChecked = Editor.selectedSongIds.has(s.id);
             const item = document.createElement('div'); 
             item.className = "list-item-compact"; 
