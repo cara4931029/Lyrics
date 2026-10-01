@@ -217,7 +217,7 @@
             設定可互相通融的字詞，每行一組，組內字詞以斜線 <code>/</code> 或逗號區隔。<br>
             遊玩判定、顏色辨識與提示皆會視為完全相同。
         </p>
-        <textarea id="tolerance-textarea" class="lyrics-textarea-large" style="min-height:200px;font-family:inherit" placeholder="例如：&#10;你/妳&#10;哦/喔/噢"></textarea>
+        <textarea id="tolerance-textarea" class="lyrics-textarea-large" style="min-height:160px;font-family:inherit" placeholder="例如：&#10;你/妳&#10;他/她&#10;喔/哦/噢"></textarea>
         <div class="action-row">
             <button class="btn btn-main" onclick="Tolerance.save()">儲存設定</button>
             <button class="btn btn-aux" onclick="Tolerance.resetDefaults()">恢復預設</button>
@@ -252,11 +252,18 @@
 // 取消預設題庫，初始為空陣列
 const INITIAL_SONGS = [];
 
-const DEFAULT_TOLERANCE = "你/妳\n哦/喔/噢\n他/她";
+// 容錯預設值：僅保留 你/妳、他/她、喔/哦/噢
+const DEFAULT_TOLERANCE = "你/妳\n他/她\n喔/哦/噢";
 
 const Tolerance = {
     map: null,
-    getRaw: () => localStorage.getItem('ly_v17_tol') !== null ? localStorage.getItem('ly_v17_tol') : DEFAULT_TOLERANCE,
+    getRaw: () => {
+        const val = localStorage.getItem('ly_v17_tol');
+        if (val === null || val === "你/妳\n哦/喔/噢\n做/作\n只/隻\n他/她/牠") {
+            return DEFAULT_TOLERANCE;
+        }
+        return val;
+    },
     setRaw: (v) => localStorage.setItem('ly_v17_tol', v),
     init: () => {
         Tolerance.build(Tolerance.getRaw());
@@ -577,7 +584,8 @@ const Data = {
                 Data.ensureLangPlaylists(Data.getPlaylists());
                 songs.forEach(s => { if (s.lang) Data.syncSongWithLangPlaylists(s.id, s.lang); });
                 
-                Logic.state.selectedRanges = ['__all__'];
+                // 載入新題庫時預設不選取任何範圍
+                Logic.state.selectedRanges = [];
                 Logic.refreshPlaylistSelect();
 
                 if (document.getElementById('view-editor').classList.contains('active')) Editor.render();
@@ -688,7 +696,7 @@ const App = {
 };
 
 const Logic = {
-    state: { song:null, target:"", tokensByLine:[], blanks:[], revealed:[], targetLen:0, lastRawInput: "", selectedRanges: null },
+    state: { song:null, target:"", tokensByLine:[], blanks:[], revealed:[], targetLen:0, lastRawInput: "", selectedRanges: [] },
     saveSession: () => {
         const pa = document.getElementById('game-play-area');
         if(pa && pa.style.display !== 'none' && Logic.state.song){
@@ -799,8 +807,9 @@ const Logic = {
         allPlaylists.forEach(p => (p.songIds || []).forEach(id => inPlaylistSongIds.add(id)));
         const otherSongs = allSongs.filter(s => !inPlaylistSongIds.has(s.id));
 
+        // 預設為空陣列（不勾選任何項目）
         if (Logic.state.selectedRanges === null || Logic.state.selectedRanges === undefined) {
-            Logic.state.selectedRanges = ['__all__'];
+            Logic.state.selectedRanges = [];
         }
 
         // 1. 「所有歌曲」選項
@@ -990,6 +999,26 @@ const Playlists = {
         Playlists.render();
         Logic.refreshPlaylistSelect();
     },
+    rename: (id) => {
+        const pls = Data.getPlaylists();
+        const p = pls.find(x => x.id === id);
+        if (!p) return;
+        const isLang = (x) => x && ((x.id && x.id.startsWith('pl_lang_')) || ['中文', '英文', '日文'].includes(x.name));
+        if (isLang(p)) return alert("系統自動建立的語言歌單無法更改名稱");
+
+        const newName = prompt("請輸入新的歌單名稱：", p.name);
+        if (newName === null) return;
+        const trimmed = newName.trim();
+        if (!trimmed) return alert("歌單名稱不能為空！");
+        if (trimmed.toLowerCase() === p.name.trim().toLowerCase()) return;
+        if (pls.some(x => x.id !== id && x.name.trim().toLowerCase() === trimmed.toLowerCase())) {
+            return alert("歌單名稱已存在，無法新增重複名稱的歌單！");
+        }
+        p.name = trimmed;
+        Data.savePlaylists(pls);
+        Playlists.render();
+        Logic.refreshPlaylistSelect();
+    },
     render: () => {
         const list = document.getElementById('playlist-list');
         list.innerHTML = "";
@@ -1014,6 +1043,10 @@ const Playlists = {
                 downDisabled = (index === pls.length - 1);
             }
 
+            const editNameBtn = isPlLang 
+                ? '' 
+                : `<button class="btn btn-aux btn-small" style="padding:3px 7px;font-size:0.75rem;white-space:nowrap" onclick="Playlists.rename('${p.id}')">編輯名稱</button>`;
+
             const deleteBtn = isPlLang 
                 ? `<span style="font-size:0.75rem;color:#888;padding:2px 5px;white-space:nowrap">語言歌單</span>` 
                 : `<button class="btn btn-aux btn-small" style="padding:3px 7px;font-size:0.75rem;color:var(--error-color);white-space:nowrap" onclick="Playlists.delete('${p.id}')">刪除</button>`;
@@ -1028,6 +1061,7 @@ const Playlists = {
                     <button class="btn btn-aux btn-small" style="padding:3px 6px;font-size:0.75rem;line-height:1" onclick="Playlists.move(${index}, -1)" ${upDisabled ? 'disabled style="opacity:0.25;cursor:default;padding:3px 6px;font-size:0.75rem;line-height:1"' : ''} title="上移">↑</button>
                     <button class="btn btn-aux btn-small" style="padding:3px 6px;font-size:0.75rem;line-height:1" onclick="Playlists.move(${index}, 1)" ${downDisabled ? 'disabled style="opacity:0.25;cursor:default;padding:3px 6px;font-size:0.75rem;line-height:1"' : ''} title="下移">↓</button>
                     <button class="btn btn-main btn-small" style="padding:3px 8px;font-size:0.75rem;white-space:nowrap" onclick="Playlists.openMultiAdd('${p.id}')">+ 加入歌曲</button>
+                    ${editNameBtn}
                     ${deleteBtn}
                 </div>
             `;
