@@ -388,7 +388,7 @@ const Data = {
         if(i.files[0]) r.readAsText(i.files[0]);
     },
 
-    // 容錯解析各種不同結構的題庫 JSON
+    // 容錯解析各種不同結構的題庫 JSON，完整保留空白換行段落
     parseRawData: (d) => {
         let rawSongs = [];
         let rawPlaylists = [];
@@ -413,13 +413,14 @@ const Data = {
             let lyrics = [];
             const rawL = s.lyrics || s.lyric || s.content || s.words;
             if (Array.isArray(rawL)) {
-                lyrics = rawL.map(l => String(l).trim()).filter(l => l.length > 0);
+                // 保留空白行，避免分段被破壞
+                lyrics = rawL.map(l => String(l));
             } else if (typeof rawL === 'string') {
-                lyrics = rawL.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+                lyrics = rawL.split('\n');
             }
 
             return { id, title, artist, lang, lyrics };
-        }).filter(s => s.title && s.lyrics.length > 0);
+        }).filter(s => s.title && s.lyrics.some(l => l.trim().length > 0));
 
         return { songs, playlists: rawPlaylists };
     },
@@ -1105,7 +1106,7 @@ const Editor = {
         const pageSongs = filtered.slice(startIndex, startIndex + PAGE_SIZE);
 
         pageSongs.forEach(s => { 
-            const langLabel = s.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${s.lang==='zh'?'中':(song.lang==='en'?'英':'日')}</span>` : '';
+            const langLabel = s.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${s.lang==='zh'?'中':(s.lang==='en'?'英':'日')}</span>` : '';
             const isChecked = Editor.selectedSongIds.has(s.id);
             const item = document.createElement('div'); 
             item.className = "list-item-compact"; 
