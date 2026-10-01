@@ -141,8 +141,8 @@
                 oninput="App.autoResize(this)"></textarea>
             
             <div class="action-row">
-                <button class="btn btn-aux" onclick="Logic.skip()">放棄跳過</button>
-                <button class="btn btn-aux" onclick="Logic.getHint()">提示字元</button>
+                <button class="btn btn-aux" onclick="Logic.skip()">放棄</button>
+                <button class="btn btn-aux" onclick="Logic.getHint()">提示</button>
                 <button class="btn btn-main" onclick="Logic.submit()">確定送出</button>
             </div>
         </div>
@@ -207,20 +207,8 @@
 </div>
 
 <script>
-const INITIAL_SONGS = [
-    {
-        id: "s1", title: "晴天", artist: "周杰倫", lang: "zh",
-        lyrics: ["故事的小黃花", "從出生那年就飄著", "童年的盪鞦韆", "隨記憶一直晃到現在", "Re So So Si Do Si La", "So La Si Si Si Si La Si La So", "吹著前奏望著天空", "我想起花瓣試著掉落"]
-    },
-    {
-        id: "s2", title: "Shape of You", artist: "Ed Sheeran", lang: "en",
-        lyrics: ["The club isn't the best place to find a lover", "So the bar is where I go", "Me and my friends at the table doing shots", "Drinking fast and then we talk slow"]
-    },
-    {
-        id: "s3", title: "Lemon", artist: "米津玄師", lang: "ja",
-        lyrics: ["夢ならばどれほどよかったでしょう", "未だにあなたのことを夢にみる", "忘れた物を取りに歸るように", "古びた思い出の埃を払う"]
-    }
-];
+// 取消預設題庫，初始為空陣列
+const INITIAL_SONGS = [];
 
 const Parser = {
     clean: (t) => t.replace(/[\(\[\{（【「『][^\)\]\}）】」』]*[\)\]\}）】」』]/g, '').trim(),
@@ -413,7 +401,6 @@ const Data = {
             let lyrics = [];
             const rawL = s.lyrics || s.lyric || s.content || s.words;
             if (Array.isArray(rawL)) {
-                // 保留空白行，避免分段被破壞
                 lyrics = rawL.map(l => String(l));
             } else if (typeof rawL === 'string') {
                 lyrics = rawL.split('\n');
@@ -428,18 +415,16 @@ const Data = {
     // 自動與手動載入 question.json
     loadQuestionJson: async (isManual = false) => {
         try {
-            // 加入時間戳記避免被 GitHub / 瀏覽器快取住
             const res = await fetch('question.json?t=' + Date.now(), { cache: 'no-cache' });
             if (!res.ok) {
                 if (isManual) alert(`載入失敗：找不到 question.json (HTTP 狀態碼: ${res.status})\n請確認 question.json 與本 html 放在同一資料夾，且檔名全為小寫。`);
                 return false;
             }
             let text = await res.text();
-            text = text.replace(/^\uFEFF/, '').trim(); // 移除微軟 UTF-8 BOM 避免 JSON 解析報錯
+            text = text.replace(/^\uFEFF/, '').trim();
             const lastHash = localStorage.getItem('ly_v17_bank_hash');
             const hasLocalSongs = !!localStorage.getItem('ly_v17_s');
 
-            // 手動點擊、初次造訪、或線上檔案有改動時進行載入
             if (isManual || !hasLocalSongs || text !== lastHash) {
                 const parsed = JSON.parse(text);
                 const { songs, playlists } = Data.parseRawData(parsed);
@@ -455,9 +440,8 @@ const Data = {
                 }
 
                 localStorage.setItem('ly_v17_bank_hash', text);
-                localStorage.removeItem('ly_v17_ag'); // 清除舊進度，避免卡在舊歌中
+                localStorage.removeItem('ly_v17_ag');
 
-                // 重置抽題進度
                 const st = Data.getStats();
                 st.playedInRound = [];
                 st.usedMap = {};
@@ -588,7 +572,6 @@ const Logic = {
         }
     },
     init: async () => { 
-        // 頁面啟動時自動載入同目錄下的 question.json
         await Data.loadQuestionJson(false);
 
         Data.ensureLangPlaylists(Data.getPlaylists());
@@ -601,7 +584,6 @@ const Logic = {
             if (e.ctrlKey && e.key === 'Enter') { e.preventDefault(); Logic.submit(); }
         };
 
-        // 檢查儲存的進度是否仍有效
         try {
             const ag = JSON.parse(localStorage.getItem('ly_v17_ag'));
             if(ag && ag.isInGame && ag.state && ag.state.song){
@@ -677,6 +659,13 @@ const Logic = {
         container.innerHTML = "";
 
         const allSongs = Data.getSongs();
+
+        // 若題庫為空，顯示提示訊息
+        if (!allSongs.length) {
+            container.innerHTML = `<div style="padding:30px 15px;text-align:center;color:#aaa;line-height:1.8">⚠️ 目前題庫為空，請載入題庫<br><span style="font-size:0.85rem;color:#888">請點擊右上角 <b style="color:var(--secondary-color)">🔄 重新載入題庫</b><br>或至「題庫管理」匯入題庫檔案</span></div>`;
+            return;
+        }
+
         const allPlaylists = Data.getPlaylists();
         const inPlaylistSongIds = new Set();
         allPlaylists.forEach(p => (p.songIds || []).forEach(id => inPlaylistSongIds.add(id)));
@@ -713,6 +702,8 @@ const Logic = {
         Logic.updateRangeSelection();
     },
     startGame: () => { 
+        const all = Data.getSongs();
+        if(!all.length) return alert("⚠️ 目前題庫為空，請先載入題庫！");
         const sgs = Logic.getSelectedSongs();
         if(!sgs.length) return alert("所選範圍內無歌曲，請至少勾選一個有歌曲的範圍！");
         document.getElementById('game-setup').style.display='none'; 
@@ -1089,7 +1080,17 @@ const Editor = {
         const q = (document.getElementById('search-input') ? document.getElementById('search-input').value : "").toLowerCase();
         const adv = document.getElementById('search-advanced') ? document.getElementById('search-advanced').checked : false;
 
-        const filtered = Data.getSongs().filter(s => {
+        const allSongs = Data.getSongs();
+        const paginationContainer = document.getElementById('editor-pagination');
+
+        if (!allSongs.length) {
+            list.innerHTML = `<div style="padding:35px 15px;text-align:center;color:#888;line-height:1.8">⚠️ 目前題庫為空<br><span style="font-size:0.85rem">可點擊上方「載入 question.json」、「匯入」或「+ 新增歌曲」開始建立題庫。</span></div>`;
+            if (paginationContainer) paginationContainer.innerHTML = "";
+            Editor.updateBatchBtn();
+            return;
+        }
+
+        const filtered = allSongs.filter(s => {
             if(!q) return true;
             const matchMeta = s.title.toLowerCase().includes(q) || s.artist.toLowerCase().includes(q);
             if(matchMeta) return true;
@@ -1126,7 +1127,6 @@ const Editor = {
             list.appendChild(item); 
         }); 
 
-        const paginationContainer = document.getElementById('editor-pagination');
         if (paginationContainer) {
             let optionsHTML = '';
             for (let i = 1; i <= totalPages; i++) {
