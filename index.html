@@ -137,11 +137,11 @@
             <div id="game-lyrics-view" class="lyrics-box"></div>
             
             <textarea id="player-input" class="main-textarea" rows="2" 
-                placeholder="在此輸入答案 (依順序)...&#10;桌機支援 Ctrl + Enter 送出" 
+                placeholder="在此輸入答案 (不計空格、換行、大小寫)...&#10;桌機支援 Ctrl + Enter 送出" 
                 oninput="App.autoResize(this)"></textarea>
             
             <div class="action-row">
-                <button class="btn btn-aux" onclick="Logic.skip()">放棄</button>
+                <button class="btn btn-aux" onclick="Logic.skip()">跳過</button>
                 <button class="btn btn-aux" onclick="Logic.getHint()">提示</button>
                 <button class="btn btn-main" onclick="Logic.submit()">確定送出</button>
             </div>
@@ -182,7 +182,32 @@
     </div>
 </div>
 
-<div id="song-modal" class="modal"><div class="modal-body"><h3 id="modal-head">編輯</h3><input type="hidden" id="edit-id"><label>歌名</label><input type="text" id="edit-title" class="search-bar"><label>歌手</label><input type="text" id="edit-artist" class="search-bar"><label>語言</label><select id="edit-lang" class="search-bar" style="cursor:pointer"><option value="">(無)</option><option value="zh">中文</option><option value="en">英文</option><option value="ja">日文</option></select><label>歌詞 (一行一句)</label><textarea id="edit-lyrics" class="lyrics-textarea-large"></textarea><div class="action-row"><button class="btn btn-main" onclick="Editor.save()">儲存</button><button class="btn btn-aux" onclick="Editor.closeModal()">取消</button></div></div></div>
+<div id="song-modal" class="modal">
+    <div class="modal-body">
+        <h3 id="modal-head">編輯</h3>
+        <input type="hidden" id="edit-id">
+        <label>歌名</label>
+        <input type="text" id="edit-title" class="search-bar">
+        <label>歌手</label>
+        <input type="text" id="edit-artist" class="search-bar">
+        <label>語言</label>
+        <select id="edit-lang" class="search-bar" style="cursor:pointer">
+            <option value="">(無)</option>
+            <option value="zh">中文</option>
+            <option value="en">英文</option>
+            <option value="ja">日文</option>
+        </select>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin:15px 0 5px">
+            <label style="margin:0;color:var(--primary-color);font-weight:bold">歌詞</label>
+            <button type="button" class="btn btn-aux btn-small" onclick="Editor.searchLyricsGoogle()" style="padding:3px 8px;font-size:0.8rem">🔍 搜尋歌詞</button>
+        </div>
+        <textarea id="edit-lyrics" class="lyrics-textarea-large"></textarea>
+        <div class="action-row">
+            <button class="btn btn-main" onclick="Editor.save()">儲存</button>
+            <button class="btn btn-aux" onclick="Editor.closeModal()">取消</button>
+        </div>
+    </div>
+</div>
 
 <div id="fav-modal" class="modal"><div class="modal-body"><h3>加入歌單</h3><input type="hidden" id="fav-song-id"><div id="fav-playlist-options"></div><button class="btn btn-aux" style="width:100%;margin-top:10px" onclick="document.getElementById('fav-modal').style.display='none'">關閉</button></div></div>
 
@@ -1073,6 +1098,13 @@ const Editor = {
     onSearchInput: () => {
         Editor.page = 1;
         Editor.render();
+    },
+    searchLyricsGoogle: () => {
+        const t = document.getElementById('edit-title').value.trim();
+        const a = document.getElementById('edit-artist').value.trim();
+        if (!t && !a) return alert("請先輸入歌名或歌手！");
+        const query = `${t} ${a} 歌詞`.trim();
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
     },
     render: () => { 
         const list = document.getElementById('editor-list'); 
