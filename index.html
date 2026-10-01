@@ -21,10 +21,10 @@
         .stats-header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 10px 0; border-bottom: 1px solid var(--border-color);
-            margin-bottom: 15px; font-size: 0.85rem;
+            margin-bottom: 15px; font-size: 0.85rem; flex-wrap: wrap; gap: 8px;
         }
         .stats-summary b { color: var(--primary-color); margin: 0 3px; }
-        .nav-btns { display: flex; gap: 6px; }
+        .nav-btns { display: flex; gap: 6px; flex-wrap: wrap; }
         .nav-btns button {
             background: none; border: 1px solid var(--primary-color);
             color: var(--primary-color); padding: 5px 10px; border-radius: 5px;
@@ -104,6 +104,7 @@
             <button id="nav-btn-game" style="display:none" onclick="App.switchView('game')">回遊戲</button>
             <button onclick="App.switchView('playlists')">歌單管理</button>
             <button onclick="App.switchView('editor')">題庫管理</button>
+            <button onclick="Tolerance.openModal()">容錯設定</button>
         </div>
     </div>
 
@@ -199,12 +200,28 @@
         </select>
         <div style="display:flex;justify-content:space-between;align-items:center;margin:15px 0 5px">
             <label style="margin:0;color:var(--primary-color);font-weight:bold">歌詞</label>
-            <button type="button" class="btn btn-aux btn-small" onclick="Editor.searchLyricsGoogle()" style="padding:3px 8px;font-size:0.8rem">🔍 搜尋歌詞</button>
+            <button type="button" class="btn btn-aux" onclick="Editor.searchLyricsGoogle()" style="width:auto;flex:0 0 auto;max-width:max-content;padding:4px 10px;font-size:0.8rem;border-radius:6px;cursor:pointer">🔍 搜尋歌詞</button>
         </div>
         <textarea id="edit-lyrics" class="lyrics-textarea-large"></textarea>
         <div class="action-row">
             <button class="btn btn-main" onclick="Editor.save()">儲存</button>
             <button class="btn btn-aux" onclick="Editor.closeModal()">取消</button>
+        </div>
+    </div>
+</div>
+
+<div id="tolerance-modal" class="modal">
+    <div class="modal-body">
+        <h3 style="margin-top:0">自訂容錯設定</h3>
+        <p style="font-size:0.85rem;color:#aaa;margin-top:0;line-height:1.5">
+            設定可互相通融的字詞，每行一組，組內字詞以斜線 <code>/</code> 或逗號區隔。<br>
+            遊玩判定、顏色辨識與提示皆會視為完全相同。
+        </p>
+        <textarea id="tolerance-textarea" class="lyrics-textarea-large" style="min-height:200px;font-family:inherit" placeholder="例如：&#10;你/妳&#10;哦/喔/噢"></textarea>
+        <div class="action-row">
+            <button class="btn btn-main" onclick="Tolerance.save()">儲存設定</button>
+            <button class="btn btn-aux" onclick="Tolerance.resetDefaults()">恢復預設</button>
+            <button class="btn btn-aux" onclick="Tolerance.closeModal()">取消</button>
         </div>
     </div>
 </div>
@@ -234,6 +251,83 @@
 <script>
 // 取消預設題庫，初始為空陣列
 const INITIAL_SONGS = [];
+
+const DEFAULT_TOLERANCE = "你/妳\n哦/喔/噢\n他/她";
+
+const Tolerance = {
+    map: null,
+    getRaw: () => localStorage.getItem('ly_v17_tol') !== null ? localStorage.getItem('ly_v17_tol') : DEFAULT_TOLERANCE,
+    setRaw: (v) => localStorage.setItem('ly_v17_tol', v),
+    init: () => {
+        Tolerance.build(Tolerance.getRaw());
+    },
+    build: (rawStr) => {
+        const lines = (rawStr || "").split('\n').map(l => l.trim()).filter(Boolean);
+        const charMap = new Map();
+        const phraseMap = [];
+
+        lines.forEach(line => {
+            const parts = line.split(/[/,，、|\s]+/).map(p => p.trim()).filter(Boolean);
+            if (parts.length > 1) {
+                const canonical = parts[0].normalize('NFKC').toLowerCase();
+                parts.forEach(p => {
+                    const norm = p.normalize('NFKC').toLowerCase();
+                    if (norm !== canonical) {
+                        if (norm.length === 1 && canonical.length === 1) {
+                            charMap.set(norm, canonical);
+                        } else {
+                            phraseMap.push({ from: norm, to: canonical });
+                        }
+                    }
+                });
+            }
+        });
+
+        phraseMap.sort((a, b) => b.from.length - a.from.length);
+        Tolerance.map = { charMap, phraseMap };
+    },
+    normalize: (str) => {
+        if (!str) return "";
+        if (!Tolerance.map) Tolerance.init();
+        let s = str.normalize('NFKC').toLowerCase().replace(/\s/g, '');
+        for (const { from, to } of Tolerance.map.phraseMap) {
+            s = s.replaceAll(from, to);
+        }
+        let res = "";
+        for (const ch of s) {
+            res += Tolerance.map.charMap.get(ch) || ch;
+        }
+        return res;
+    },
+    isEqual: (c1, c2) => {
+        if (!c1 || !c2) return false;
+        if (!Tolerance.map) Tolerance.init();
+        const n1 = c1.normalize('NFKC').toLowerCase();
+        const n2 = c2.normalize('NFKC').toLowerCase();
+        if (n1 === n2) return true;
+        const can1 = Tolerance.map.charMap.get(n1) || n1;
+        const can2 = Tolerance.map.charMap.get(n2) || n2;
+        return can1 === can2;
+    },
+    openModal: () => {
+        document.getElementById('tolerance-textarea').value = Tolerance.getRaw();
+        document.getElementById('tolerance-modal').style.display = 'block';
+    },
+    closeModal: () => {
+        document.getElementById('tolerance-modal').style.display = 'none';
+    },
+    resetDefaults: () => {
+        document.getElementById('tolerance-textarea').value = DEFAULT_TOLERANCE;
+    },
+    save: () => {
+        const val = document.getElementById('tolerance-textarea').value;
+        Tolerance.setRaw(val);
+        Tolerance.build(val);
+        Tolerance.closeModal();
+        if (Logic.state.song) App.render(false);
+        alert("容錯設定已儲存！");
+    }
+};
 
 const Parser = {
     clean: (t) => t.replace(/[\(\[\{（【「『][^\)\]\}）】」』]*[\)\]\}）】」』]/g, '').trim(),
@@ -373,7 +467,7 @@ const Data = {
     getStats: () => JSON.parse(localStorage.getItem('ly_v17_st')) || { ok:0, ch:0, sk:0, hist:[], playedInRound:[], usedMap:{} },
     saveStats: (s) => localStorage.setItem('ly_v17_st', JSON.stringify(s)),
     exportAll: () => {
-        const d = {s:Data.getSongs(), p:Data.getPlaylists(), st:Data.getStats()};
+        const d = {s:Data.getSongs(), p:Data.getPlaylists(), st:Data.getStats(), tol:Tolerance.getRaw()};
         const a = document.createElement('a');
         a.href = URL.createObjectURL(new Blob([JSON.stringify(d)], {type: "application/json"}));
         a.download = `lyrics_backup_${Date.now()}.json`; a.click();
@@ -389,6 +483,10 @@ const Data = {
                         Data.saveSongs(songs);
                         if (playlists && playlists.length > 0) Data.savePlaylists(playlists);
                         if (d.st) Data.saveStats(d.st);
+                        if (d.tol !== undefined) {
+                            Tolerance.setRaw(d.tol);
+                            Tolerance.build(d.tol);
+                        }
                         localStorage.removeItem('ly_v17_ag');
                         alert(`成功匯入 ${songs.length} 首歌！`);
                         location.reload();
@@ -462,6 +560,10 @@ const Data = {
                 Data.saveSongs(songs);
                 if (playlists && playlists.length > 0) {
                     Data.savePlaylists(playlists);
+                }
+                if (parsed.tol !== undefined) {
+                    Tolerance.setRaw(parsed.tol);
+                    Tolerance.build(parsed.tol);
                 }
 
                 localStorage.setItem('ly_v17_bank_hash', text);
@@ -564,7 +666,7 @@ const App = {
                                 u.innerText = c; u.classList.add('fill-hint');
                             } else if (userCh) {
                                 u.innerText = userCh;
-                                const isCorrect = userCh.normalize('NFKC').toLowerCase() === c.normalize('NFKC').toLowerCase();
+                                const isCorrect = Tolerance.isEqual(userCh, c);
                                 u.classList.add(isCorrect ? 'fill-correct' : 'fill-wrong');
                             } else {
                                 u.innerHTML = "&nbsp;";
@@ -597,6 +699,7 @@ const Logic = {
         }
     },
     init: async () => { 
+        Tolerance.init();
         await Data.loadQuestionJson(false);
 
         Data.ensureLangPlaylists(Data.getPlaylists());
@@ -832,8 +935,7 @@ const Logic = {
 
     submit: () => {
         const raw = document.getElementById('player-input').value; 
-        const normalize = (s) => s.normalize('NFKC').toLowerCase().replace(/\s/g, '');
-        if(normalize(raw) === normalize(Logic.state.target)) { 
+        if(Tolerance.normalize(raw) === Tolerance.normalize(Logic.state.target)) { 
             document.getElementById('player-input').value = "";
             const st=Data.getStats(); st.ok++; st.ch+=Logic.state.targetLen; Data.saveStats(st); Logic.updateStats(); 
             Logic.next();
@@ -842,14 +944,13 @@ const Logic = {
 
     getHint: () => {
         const target = Logic.state.target;
-        const targetN = target.normalize('NFKC').toLowerCase();
         const currentFilteredIn = document.getElementById('player-input').value.split('').filter(c => !/\s/.test(c));
         const lastFin = Logic.state.lastRawInput ? Logic.state.lastRawInput.split('').filter(c => !/\s/.test(c)) : [];
         let pool = [];
         for(let i=0; i<target.length; i++) {
             if(!Logic.state.revealed.includes(i) && !/\s/.test(target[i])) {
-                const isCorrectOnScreen = lastFin[i] && (lastFin[i].normalize('NFKC').toLowerCase() === targetN[i]);
-                const isCorrectInInput = currentFilteredIn[i] && (currentFilteredIn[i].normalize('NFKC').toLowerCase() === targetN[i]);
+                const isCorrectOnScreen = lastFin[i] && Tolerance.isEqual(lastFin[i], target[i]);
+                const isCorrectInInput = currentFilteredIn[i] && Tolerance.isEqual(currentFilteredIn[i], target[i]);
                 if (!isCorrectOnScreen && !isCorrectInInput) {
                     pool.push(i);
                 }
