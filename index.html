@@ -762,14 +762,25 @@ const Logic = {
         }
 
         const allPlaylists = Data.getPlaylists();
-        const inPlaylistSongIds = new Set();
-        allPlaylists.forEach(p => (p.songIds || []).forEach(id => inPlaylistSongIds.add(id)));
-        const otherSongs = allSongs.filter(s => !inPlaylistSongIds.has(s.id));
+        const isLang = (x) => x && ((x.id && x.id.startsWith('pl_lang_')) || ['中文', '英文', '日文'].includes(x.name));
+        const customPls = allPlaylists.filter(x => !isLang(x));
+        const inCustomPlaylistSongIds = new Set();
+        customPls.forEach(p => (p.songIds || []).forEach(id => inCustomPlaylistSongIds.add(id)));
+
+        const getOtherLangSongs = (langKey, plId, plName) => {
+            const pl = allPlaylists.find(x => x.id === plId || x.name === plName);
+            const plSongIds = new Set(pl && pl.songIds ? pl.songIds : []);
+            return allSongs.filter(s => (s.lang === langKey || plSongIds.has(s.id)) && !inCustomPlaylistSongIds.has(s.id));
+        };
 
         const targetSongIds = new Set();
         sel.forEach(r => {
-            if (r === '__other__') {
-                otherSongs.forEach(s => targetSongIds.add(s.id));
+            if (r === '__other_zh__') {
+                getOtherLangSongs('zh', 'pl_lang_zh', '中文').forEach(s => targetSongIds.add(s.id));
+            } else if (r === '__other_en__') {
+                getOtherLangSongs('en', 'pl_lang_en', '英文').forEach(s => targetSongIds.add(s.id));
+            } else if (r === '__other_ja__') {
+                getOtherLangSongs('ja', 'pl_lang_ja', '日文').forEach(s => targetSongIds.add(s.id));
             } else {
                 const pl = allPlaylists.find(x => x.id === r);
                 if (pl && pl.songIds) {
@@ -803,9 +814,20 @@ const Logic = {
         }
 
         const allPlaylists = Data.getPlaylists();
-        const inPlaylistSongIds = new Set();
-        allPlaylists.forEach(p => (p.songIds || []).forEach(id => inPlaylistSongIds.add(id)));
-        const otherSongs = allSongs.filter(s => !inPlaylistSongIds.has(s.id));
+        const isLang = (x) => x && ((x.id && x.id.startsWith('pl_lang_')) || ['中文', '英文', '日文'].includes(x.name));
+        const customPls = allPlaylists.filter(x => !isLang(x));
+        const inCustomPlaylistSongIds = new Set();
+        customPls.forEach(p => (p.songIds || []).forEach(id => inCustomPlaylistSongIds.add(id)));
+
+        const getOtherLangSongs = (langKey, plId, plName) => {
+            const pl = allPlaylists.find(x => x.id === plId || x.name === plName);
+            const plSongIds = new Set(pl && pl.songIds ? pl.songIds : []);
+            return allSongs.filter(s => (s.lang === langKey || plSongIds.has(s.id)) && !inCustomPlaylistSongIds.has(s.id));
+        };
+
+        const otherZhSongs = getOtherLangSongs('zh', 'pl_lang_zh', '中文');
+        const otherEnSongs = getOtherLangSongs('en', 'pl_lang_en', '英文');
+        const otherJaSongs = getOtherLangSongs('ja', 'pl_lang_ja', '日文');
 
         // 預設為空陣列（不勾選任何項目）
         if (Logic.state.selectedRanges === null || Logic.state.selectedRanges === undefined) {
@@ -829,12 +851,20 @@ const Logic = {
             container.appendChild(label);
         });
 
-        // 3. 「其他 (未歸類歌曲)」選項
-        const otherChecked = Logic.state.selectedRanges.includes('__other__');
-        const otherLabel = document.createElement('label');
-        otherLabel.className = "multi-select-item";
-        otherLabel.innerHTML = `<input type="checkbox" value="__other__" ${otherChecked ? 'checked' : ''} onchange="Logic.updateRangeSelection()"> <div><b>其他 (未歸類歌曲)</b> <small style="color:#aaa">(${otherSongs.length}首)</small></div>`;
-        container.appendChild(otherLabel);
+        // 3. 分裂成中英日文三個未歸類選項
+        const otherLangDefs = [
+            { key: '__other_zh__', name: '其他 (未歸類中文歌曲)', count: otherZhSongs.length },
+            { key: '__other_en__', name: '其他 (未歸類英文歌曲)', count: otherEnSongs.length },
+            { key: '__other_ja__', name: '其他 (未歸類日文歌曲)', count: otherJaSongs.length }
+        ];
+
+        otherLangDefs.forEach(def => {
+            const isChecked = Logic.state.selectedRanges.includes(def.key);
+            const label = document.createElement('label');
+            label.className = "multi-select-item";
+            label.innerHTML = `<input type="checkbox" value="${def.key}" ${isChecked ? 'checked' : ''} onchange="Logic.updateRangeSelection()"> <div><b>${def.name}</b> <small style="color:#aaa">(${def.count}首)</small></div>`;
+            container.appendChild(label);
+        });
 
         Logic.updateRangeSelection();
     },
