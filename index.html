@@ -235,6 +235,9 @@
             偵測到目前已有題庫，請選擇匯入本地檔案的方式：
         </p>
         <div style="display:flex;flex-direction:column;gap:10px;margin:15px 0">
+            <button class="btn btn-aux" style="padding:10px;font-size:0.95rem;color:var(--error-color)" onclick="Data.executeImport('replace')">
+                完全覆蓋（直接以本地檔案取代目前所有題庫）
+            </button>
             <button class="btn btn-main" style="padding:12px;font-size:1rem" onclick="Data.executeImport('merge')">
                 增量合併（保留現有資料，加入本地新歌曲與歌單）
             </button>
@@ -262,9 +265,6 @@
                     <span>採用本地檔案版本（覆蓋現有容錯設定）</span>
                 </label>
             </div>
-            <button class="btn btn-aux" style="padding:10px;font-size:0.95rem;color:var(--error-color)" onclick="Data.executeImport('replace')">
-                完全覆蓋（直接以本地檔案取代目前所有題庫）
-            </button>
         </div>
         <div class="action-row" style="margin-top:10px">
             <button class="btn btn-aux" onclick="Data.cancelImport()">取消</button>
@@ -745,7 +745,7 @@ const Data = {
                 const targetId = finalSongs[exIndex].id;
                 idMap.set(imp.id, targetId);
                 if (conflictPref === "local") {
-                    finalSongs[exIndex] = { ...imp, id: targetId };
+                    finalSongs[exIndex] = { ...finalSongs[exIndex], id: targetId };
                     updatedCount++;
                 }
             }
@@ -1186,37 +1186,85 @@ const Logic = {
         st.playedInRound = played;
         if(!st.playedInRound.includes(song.id)) st.playedInRound.push(song.id);
         
-        let paras = []; let cur = []; 
-        song.lyrics.forEach(l => { 
-            const cl = Parser.clean(l); 
-            if(l.trim()===""||cl==="") { if(cur.length) paras.push(cur); cur=[]; } else cur.push(cl); 
+        // 整理所有有效歌詞行與其所屬段落編號
+        const lineObjects = [];
+        let paraIdx = 0;
+        song.lyrics.forEach(l => {
+            const cl = Parser.clean(l);
+            if (!l.trim() || !cl) {
+                paraIdx++;
+            } else {
+                lineObjects.push({ text: cl, paraIdx });
+            }
         });
-        if(cur.length) paras.push(cur);
-        
-        if(!paras.length) {
-            const fallback = song.lyrics.map(l => Parser.clean(l)).filter(l => l.trim() !== "");
-            paras = fallback.length ? [fallback] : [song.lyrics];
+
+        const N = lineObjects.length;
+        if (N === 0) {
+            Logic.next();
+            return;
         }
-        
-        const targetPara = paras[Math.floor(Math.random()*paras.length)] || song.lyrics;
-        if(!st.usedMap[song.id]) st.usedMap[song.id] = [];
-        
-        let segments = []; 
-        if(targetPara.length < 3) {
-            segments.push({s:0, l:targetPara.length, k:`0_${targetPara.length}`});
-        } else {
-            const maxL = Math.min(6, targetPara.length);
-            for(let l=3; l<=maxL; l++) { 
-                for(let i=0; i<=targetPara.length - l; i++) segments.push({s:i,l,k:`${i}_${l}`}); 
+
+        // 若整首歌有效歌詞少於等於 3 行，直接全部出題
+        if (N <= 3) {
+            Logic.prepare(lineObjects.map(o => o.text));
+            return;
+        }
+
+        const minL = 3;
+        const maxL = Math.min(5, N);
+        const candidates = [];
+
+        for (let l = minL; l <= maxL; l++) {
+            for (let i = 0; i <= N - l; i++) {
+                const slice = lineObjects.slice(i, i + l);
+                const paraSpan = slice[slice.length - 1].paraIdx - slice[0].paraIdx;
+                // 允許同段落(0)或跨1個相鄰段落(1)，避免跨太多段落
+                if (paraSpan <= 1) {
+                    candidates.push({ start: i, len: l, lines: slice.map(s => s.text) });
+                }
             }
         }
-        let unused = segments.filter(s => !st.usedMap[song.id].includes(s.k)); 
-        if(!unused.length) { st.usedMap[song.id] = []; unused = segments; }
-        
-        const ch = unused[Math.floor(Math.random()*unused.length)] || segments[0]; 
-        st.usedMap[song.id].push(ch.k); 
+
+        if (candidates.length === 0) {
+            Logic.prepare(lineObjects.slice(0, minL).map(o => o.text));
+            return;
+        }
+
+        if (!st.usedMap[song.id] || !Array.isArray(st.usedMap[song.id])) {
+            st.usedMap[song.id] = [];
+        }
+
+        const usedSet = new Set(st.usedMap[song.id]);
+
+        // 計算各候選句段與已出過行數的重疊度
+        let scored = candidates.map(c => {
+            let overlap = 0;
+            for (let j = c.start; j < c.start + c.len; j++) {
+                if (usedSet.has(j)) overlap++;
+            }
+            return { ...c, overlap };
+        });
+
+        let minOverlap = Math.min(...scored.map(s => s.overlap));
+        let poolCandidates = scored.filter(s => s.overlap === minOverlap);
+
+        // 若全部候選句段都有重疊（整首歌各段皆已出過一輪），重置該歌的已出記錄
+        if (minOverlap > 0) {
+            usedSet.clear();
+            scored = candidates.map(c => ({ ...c, overlap: 0 }));
+            poolCandidates = scored;
+        }
+
+        const picked = poolCandidates[Math.floor(Math.random() * poolCandidates.length)];
+
+        // 將選中的行記錄進 usedSet
+        for (let j = picked.start; j < picked.start + picked.len; j++) {
+            usedSet.add(j);
+        }
+        st.usedMap[song.id] = Array.from(usedSet);
         Data.saveStats(st);
-        Logic.prepare(targetPara.slice(ch.s, ch.s+ch.l));
+
+        Logic.prepare(picked.lines);
     },
 
     prepare: (lines) => {
