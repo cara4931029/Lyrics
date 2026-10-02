@@ -250,6 +250,18 @@
                     <span>採用本地檔案版本（覆蓋現有重複項目）</span>
                 </label>
             </div>
+            <div id="import-tol-conflict-box" style="background:#222;border:1px solid #444;border-radius:8px;padding:12px;display:none;font-size:0.85rem">
+                <div style="color:var(--primary-color);font-weight:bold;margin-bottom:6px">⚠️ 偵測到容錯設定不同：</div>
+                <div style="color:#aaa;margin-bottom:8px">若容錯設定有衝突時：</div>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer;margin-bottom:6px">
+                    <input type="radio" name="tol-conflict-pref" value="cloud" checked>
+                    <span>保留現有版本（忽略本地檔案容錯設定）</span>
+                </label>
+                <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+                    <input type="radio" name="tol-conflict-pref" value="local">
+                    <span>採用本地檔案版本（覆蓋現有容錯設定）</span>
+                </label>
+            </div>
             <button class="btn btn-aux" style="padding:10px;font-size:0.95rem;color:var(--error-color)" onclick="Data.executeImport('replace')">
                 完全覆蓋（直接以本地檔案取代目前所有題庫）
             </button>
@@ -290,6 +302,7 @@
                 只顯示已在歌單內歌曲
             </label>
         </div>
+        <div id="multi-fav-pagination-top"></div>
         <div id="multi-fav-list" class="multi-select-list"></div>
         <div id="multi-fav-pagination"></div>
         <div class="action-row">
@@ -636,6 +649,13 @@ const Data = {
             conflictBox.style.display = 'none';
         }
 
+        const tolBox = document.getElementById('import-tol-conflict-box');
+        const d = Data.pendingImport ? Data.pendingImport.d : null;
+        const hasTolDiff = d && d.tol !== undefined && d.tol.trim() !== Tolerance.getRaw().trim();
+        if (tolBox) {
+            tolBox.style.display = hasTolDiff ? 'block' : 'none';
+        }
+
         document.getElementById('import-modal').style.display = 'block';
     },
 
@@ -648,12 +668,13 @@ const Data = {
         if (!Data.pendingImport) return;
         const { d, songs, playlists } = Data.pendingImport;
         const conflictPref = document.querySelector('input[name="conflict-pref"]:checked')?.value || 'cloud';
+        const tolPref = document.querySelector('input[name="tol-conflict-pref"]:checked')?.value || 'cloud';
 
         if (mode === 'replace') {
-            Data.applyImportData(songs, playlists, d, 'replace');
+            Data.applyImportData(songs, playlists, d, 'replace', conflictPref, tolPref);
             alert(`已完全以本地檔案取代！共載入 ${songs.length} 首歌。`);
         } else {
-            const result = Data.applyImportData(songs, playlists, d, 'merge', conflictPref);
+            const result = Data.applyImportData(songs, playlists, d, 'merge', conflictPref, tolPref);
             alert(`增量合併完成！新增 ${result.addedCount} 首歌曲${result.updatedCount > 0 ? `，更新 ${result.updatedCount} 首重複歌曲` : ''}。`);
         }
 
@@ -661,14 +682,17 @@ const Data = {
         location.reload();
     },
 
-    applyImportData: (impSongs, impPls, d, mode, conflictPref = 'cloud') => {
+    applyImportData: (impSongs, impPls, d, mode, conflictPref = 'cloud', tolPref = 'cloud') => {
+        const hasTolDiff = d && d.tol !== undefined && d.tol.trim() !== Tolerance.getRaw().trim();
         if (mode === 'replace') {
             Data.saveSongs(impSongs);
             if (impPls && impPls.length > 0) Data.savePlaylists(impPls);
             if (d && d.st) Data.saveStats(d.st);
             if (d && d.tol !== undefined) {
-                Tolerance.setRaw(d.tol);
-                Tolerance.build(d.tol);
+                if (!hasTolDiff || tolPref === 'local') {
+                    Tolerance.setRaw(d.tol);
+                    Tolerance.build(d.tol);
+                }
             }
             localStorage.removeItem('ly_v17_ag');
             return { addedCount: impSongs.length, updatedCount: 0 };
@@ -684,9 +708,11 @@ const Data = {
         Data.ensureLangPlaylists(finalPls);
         finalSongs.forEach(s => { if (s.lang) Data.syncSongWithLangPlaylists(s.id, s.lang); });
 
-        if (d && d.tol !== undefined && conflictPref === 'local') {
-            Tolerance.setRaw(d.tol);
-            Tolerance.build(d.tol);
+        if (d && d.tol !== undefined) {
+            if (tolPref === 'local') {
+                Tolerance.setRaw(d.tol);
+                Tolerance.build(d.tol);
+            }
         }
         localStorage.removeItem('ly_v17_ag');
         return { addedCount, updatedCount };
@@ -814,9 +840,21 @@ const Data = {
                 if (playlists && playlists.length > 0) {
                     Data.savePlaylists(playlists);
                 }
+
+                // 容錯設定檢查與選擇
                 if (parsed.tol !== undefined) {
-                    Tolerance.setRaw(parsed.tol);
-                    Tolerance.build(parsed.tol);
+                    const cloudTol = String(parsed.tol).trim();
+                    const localTol = Tolerance.getRaw().trim();
+                    if (cloudTol && localTol && cloudTol !== localTol) {
+                        const useCloud = confirm("【容錯設定不同提示】\n偵測到雲端檔案 (question.json) 的容錯設定與本地目前設定不同：\n\n【確定】：採用雲端檔案設定\n【取消】：保留本地目前設定");
+                        if (useCloud) {
+                            Tolerance.setRaw(parsed.tol);
+                            Tolerance.build(parsed.tol);
+                        }
+                    } else {
+                        Tolerance.setRaw(parsed.tol);
+                        Tolerance.build(parsed.tol);
+                    }
                 }
 
                 localStorage.setItem('ly_v17_bank_hash', text);
@@ -1383,6 +1421,16 @@ const Playlists = {
             return true;
         });
     },
+    getCurrentMultiAddPageSongs: () => {
+        const filtered = Playlists.getFilteredMultiAddSongs();
+        const PAGE_SIZE = 20;
+        const totalPages = Math.ceil(filtered.length / PAGE_SIZE) || 1;
+        let page = Playlists.multiAddPage;
+        if (page > totalPages) page = totalPages;
+        if (page < 1) page = 1;
+        const startIndex = (page - 1) * PAGE_SIZE;
+        return filtered.slice(startIndex, startIndex + PAGE_SIZE);
+    },
     onSearchInput: () => {
         Playlists.multiAddPage = 1;
         Playlists.renderMultiAddList();
@@ -1400,11 +1448,11 @@ const Playlists = {
         else Playlists.multiAddSelected.delete(songId);
     },
     toggleMultiAdd: (select) => {
-        const filtered = Playlists.getFilteredMultiAddSongs();
+        const pageSongs = Playlists.getCurrentMultiAddPageSongs();
         if (select) {
-            filtered.forEach(s => Playlists.multiAddSelected.add(s.id));
+            pageSongs.forEach(s => Playlists.multiAddSelected.add(s.id));
         } else {
-            filtered.forEach(s => Playlists.multiAddSelected.delete(s.id));
+            pageSongs.forEach(s => Playlists.multiAddSelected.delete(s.id));
         }
         Playlists.renderMultiAddList();
     },
@@ -1432,7 +1480,7 @@ const Playlists = {
         container.innerHTML = "";
 
         const filteredSongs = Playlists.getFilteredMultiAddSongs();
-        const PAGE_SIZE = 30;
+        const PAGE_SIZE = 20;
         const totalPages = Math.ceil(filteredSongs.length / PAGE_SIZE) || 1;
         if (Playlists.multiAddPage > totalPages) Playlists.multiAddPage = totalPages;
         if (Playlists.multiAddPage < 1) Playlists.multiAddPage = 1;
@@ -1445,7 +1493,7 @@ const Playlists = {
         } else {
             pageSongs.forEach(song => {
                 const isChecked = Playlists.multiAddSelected.has(song.id);
-                const langLabel = song.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${song.lang==='zh'?'中':(song.lang==='en'?'英':'日')}</span>` : '';
+                const langLabel = song.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${songLangText(song.lang)}</span>` : '';
                 const item = document.createElement('label');
                 item.className = "multi-select-item";
                 item.style.padding = "6px 10px";
@@ -1460,13 +1508,17 @@ const Playlists = {
             });
         }
 
-        const pagContainer = document.getElementById('multi-fav-pagination');
-        if (pagContainer) {
+        function songLangText(lang) {
+            return lang === 'zh' ? '中' : (lang === 'en' ? '英' : '日');
+        }
+
+        const buildPagHTML = () => {
+            if (filteredSongs.length === 0) return '';
             let optionsHTML = '';
             for (let i = 1; i <= totalPages; i++) {
                 optionsHTML += `<option value="${i}" ${i === Playlists.multiAddPage ? 'selected' : ''}>第 ${i} 頁</option>`;
             }
-            pagContainer.innerHTML = filteredSongs.length > 0 ? `
+            return `
                 <div class="pagination-bar">
                     <button class="btn btn-aux btn-small" onclick="Playlists.goToMultiAddPage(1)" ${Playlists.multiAddPage <= 1 ? 'disabled style="opacity:0.3;cursor:default"' : ''}>首頁</button>
                     <button class="btn btn-aux btn-small" onclick="Playlists.goToMultiAddPage(${Playlists.multiAddPage - 1})" ${Playlists.multiAddPage <= 1 ? 'disabled style="opacity:0.3;cursor:default"' : ''}>上一頁</button>
@@ -1478,8 +1530,14 @@ const Playlists = {
                     <button class="btn btn-aux btn-small" onclick="Playlists.goToMultiAddPage(${Playlists.multiAddPage + 1})" ${Playlists.multiAddPage >= totalPages ? 'disabled style="opacity:0.3;cursor:default"' : ''}>下一頁</button>
                     <button class="btn btn-aux btn-small" onclick="Playlists.goToMultiAddPage(${totalPages})" ${Playlists.multiAddPage >= totalPages ? 'disabled style="opacity:0.3;cursor:default"' : ''}>末頁</button>
                 </div>
-            ` : '';
-        }
+            `;
+        };
+
+        const pagTop = document.getElementById('multi-fav-pagination-top');
+        const pagBottom = document.getElementById('multi-fav-pagination');
+        const pagHTML = buildPagHTML();
+        if (pagTop) pagTop.innerHTML = pagHTML;
+        if (pagBottom) pagBottom.innerHTML = pagHTML;
     },
     saveMultiAdd: () => {
         const playlistId = document.getElementById('multi-pl-id').value;
