@@ -99,7 +99,7 @@
 
 <div class="container">
     <div class="stats-header">
-        <div class="stats-summary">對:<b><span id="st-ok">0</span></b> 字:<b><span id="st-ch">0</span></b> 跳過:<b><span id="st-sk">0</span></b></div>
+        <div class="stats-summary">對:<b><span id="st-ok">0</span></b> 字:<b><span id="st-ch">0</span></b> 提示:<b><span id="st-ht">0</span></b> 跳過:<b><span id="st-sk">0</span></b></div>
         <div class="nav-btns">
             <button id="nav-btn-game" style="display:none" onclick="App.switchView('game')">回遊戲</button>
             <button onclick="App.switchView('playlists')">歌單管理</button>
@@ -111,6 +111,13 @@
     <div id="view-game" class="view active">
         <div id="game-setup" class="mode-selector">
             <h2 style="margin-top:0">開始遊玩</h2>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;background:#252525;padding:8px 12px;border-radius:8px;border:1px solid #333">
+                <label for="setting-max-blanks" style="font-size:0.9rem;color:#ddd;cursor:pointer">挖空字數上限：</label>
+                <div style="display:flex;align-items:center;gap:6px">
+                    <input type="number" id="setting-max-blanks" min="1" max="100" value="15" style="width:65px;padding:4px 8px;background:var(--input-bg);border:1px solid #444;color:#fff;border-radius:6px;text-align:center;font-size:0.95rem;outline:none" onchange="Logic.setMaxBlanks(this.value)">
+                    <span style="font-size:0.85rem;color:#aaa">字</span>
+                </div>
+            </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
                 <span style="font-size:0.9rem;color:#aaa">選擇出題範圍 (可多選)：</span>
                 <span style="font-size:0.8rem">
@@ -585,10 +592,15 @@ const Data = {
             }
         }
     },
-    getStats: () => JSON.parse(localStorage.getItem('ly_v17_st')) || { ok:0, ch:0, sk:0, hist:[], playedInRound:[], usedMap:{} },
+    getStats: () => {
+        const s = JSON.parse(localStorage.getItem('ly_v17_st'));
+        if (!s) return { ok:0, ch:0, sk:0, ht:0, hist:[], playedInRound:[], usedMap:{} };
+        if (s.ht === undefined) s.ht = 0;
+        return s;
+    },
     saveStats: (s) => localStorage.setItem('ly_v17_st', JSON.stringify(s)),
     exportAll: () => {
-        const d = {s:Data.getSongs(), p:Data.getPlaylists(), st:Data.getStats(), tol:Tolerance.getRaw()};
+        const d = {s:Data.getSongs(), p:Data.getPlaylists(), st:Data.getStats(), tol:Tolerance.getRaw(), mb:Logic.getMaxBlanks()};
         const a = document.createElement('a');
         a.href = URL.createObjectURL(new Blob([JSON.stringify(d)], {type: "application/json"}));
         a.download = `lyrics_backup_${Date.now()}.json`; a.click();
@@ -694,6 +706,9 @@ const Data = {
                     Tolerance.build(d.tol);
                 }
             }
+            if (d && d.mb !== undefined) {
+                Logic.setMaxBlanks(d.mb);
+            }
             localStorage.removeItem('ly_v17_ag');
             return { addedCount: impSongs.length, updatedCount: 0 };
         }
@@ -713,6 +728,9 @@ const Data = {
                 Tolerance.setRaw(d.tol);
                 Tolerance.build(d.tol);
             }
+        }
+        if (d && d.mb !== undefined) {
+            Logic.setMaxBlanks(d.mb);
         }
         localStorage.removeItem('ly_v17_ag');
         return { addedCount, updatedCount };
@@ -787,8 +805,7 @@ const Data = {
             rawSongs = d;
         } else if (d && typeof d === 'object') {
             if (Array.isArray(d.s)) rawSongs = d.s;
-            else if (Array.isArray(d.songs)) rawSongs = d.songs;
-            else if (Array.isArray(d.data)) rawSongs = d.data;
+            else if (Array.isArray(d.songs)) rawSongs = d.data;
 
             if (Array.isArray(d.p)) rawPlaylists = d.p;
             else if (Array.isArray(d.playlists)) rawPlaylists = d.playlists;
@@ -982,6 +999,17 @@ const App = {
 
 const Logic = {
     state: { song:null, target:"", tokensByLine:[], blanks:[], revealed:[], targetLen:0, lastRawInput: "", selectedRanges: [] },
+    getMaxBlanks: () => {
+        const val = parseInt(localStorage.getItem('ly_v17_mb'), 10);
+        return (!isNaN(val) && val > 0) ? val : 15;
+    },
+    setMaxBlanks: (val) => {
+        let num = parseInt(val, 10);
+        if (isNaN(num) || num < 1) num = 15;
+        localStorage.setItem('ly_v17_mb', num);
+        const input = document.getElementById('setting-max-blanks');
+        if (input) input.value = num;
+    },
     saveSession: () => {
         const pa = document.getElementById('game-play-area');
         if(pa && pa.style.display !== 'none' && Logic.state.song){
@@ -1001,6 +1029,9 @@ const Logic = {
         
         Logic.updateStats(); 
         Logic.refreshPlaylistSelect(); 
+        const mbInput = document.getElementById('setting-max-blanks');
+        if (mbInput) mbInput.value = Logic.getMaxBlanks();
+
         document.getElementById('player-input').onkeydown = (e) => {
             if (e.ctrlKey && e.key === 'Enter') { e.preventDefault(); Logic.submit(); }
         };
@@ -1026,11 +1057,13 @@ const Logic = {
         document.getElementById('game-play-area').style.display='none'; 
         document.getElementById('game-setup').style.display='block'; 
         localStorage.removeItem('ly_v17_ag');
+        const mbInput = document.getElementById('setting-max-blanks');
+        if (mbInput) mbInput.value = Logic.getMaxBlanks();
         Logic.refreshPlaylistSelect();
     },
     restart: () => {
         if(!confirm("確定要重新開始？統計與出題進度將全部刷新。")) return;
-        const st = { ok: 0, ch: 0, sk: 0, hist: [], playedInRound: [], usedMap: {} };
+        const st = { ok: 0, ch: 0, sk: 0, ht: 0, hist: [], playedInRound: [], usedMap: {} };
         Data.saveStats(st);
         Logic.updateStats();
         localStorage.removeItem('ly_v17_ag');
@@ -1276,7 +1309,9 @@ const Logic = {
         const sentences = []; let cs = [];
         tbl.forEach((line, li) => { line.forEach((t, ti) => { if(t.type==='en'||t.type==='cjk') cs.push({t,li,ti,cl:t.type==='en'?t.val.length:1}); else if(t.type==='sym'||t.type==='sp'){ if(cs.length) sentences.push(cs); cs=[]; } }); if(cs.length) sentences.push(cs); cs=[]; });
         
-        const minB = Math.floor(tv*0.2), maxB = Math.floor(tv*0.5); 
+        const maxLimit = Logic.getMaxBlanks();
+        const maxB = Math.max(1, tv > maxLimit ? maxLimit : Math.floor(tv * 0.5)); 
+        const minB = Math.max(1, Math.min(Math.floor(tv * 0.2), maxB)); 
         
         const rand = Math.random();
         const mode = (rand < 0.1) ? 1 : (Math.random() < 0.5 ? 0 : 2);
@@ -1337,11 +1372,26 @@ const Logic = {
                 }
             }
         }
-        if(pool.length) { Logic.state.revealed.push(pool[Math.floor(Math.random()*pool.length)]); App.render(false); Logic.saveSession(); }
+        if(pool.length) { 
+            Logic.state.revealed.push(pool[Math.floor(Math.random()*pool.length)]); 
+            const st = Data.getStats();
+            st.ht = (st.ht || 0) + 1;
+            Data.saveStats(st);
+            Logic.updateStats();
+            App.render(false); 
+            Logic.saveSession(); 
+        }
     },
 
     skip: () => { const st=Data.getStats(); st.sk++; Data.saveStats(st); Logic.updateStats(); Logic.next(); },
-    updateStats: () => { const s=Data.getStats(); document.getElementById('st-ok').innerText=s.ok; document.getElementById('st-ch').innerText=s.ch; document.getElementById('st-sk').innerText=s.sk; }
+    updateStats: () => { 
+        const s = Data.getStats(); 
+        document.getElementById('st-ok').innerText = s.ok || 0; 
+        document.getElementById('st-ch').innerText = s.ch || 0; 
+        const htEl = document.getElementById('st-ht');
+        if (htEl) htEl.innerText = s.ht || 0;
+        document.getElementById('st-sk').innerText = s.sk || 0; 
+    }
 };
 
 const Playlists = {
