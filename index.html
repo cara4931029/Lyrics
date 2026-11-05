@@ -1009,15 +1009,13 @@ const Logic = {
         if (isNaN(num) || num < 1) num = 15;
         localStorage.setItem('ly_v17_mb', num);
         const input = document.getElementById('setting-max-blanks');
-        if (input) input.value = num;
+        if (mbInput) mbInput.value = num;
     },
     saveSession: () => {
         const pa = document.getElementById('game-play-area');
         if(pa && pa.style.display !== 'none' && Logic.state.song){
             const inp = document.getElementById('player-input');
             localStorage.setItem('ly_v17_ag', JSON.stringify({ isInGame: true, state: Logic.state, inputValue: inp ? inp.value : "" }));
-        } else {
-            localStorage.removeItem('ly_v17_ag');
         }
     },
     init: async () => { 
@@ -1029,7 +1027,6 @@ const Logic = {
         songs.forEach(s => { if (s.lang) Data.syncSongWithLangPlaylists(s.id, s.lang); });
         
         Logic.updateStats(); 
-        Logic.refreshPlaylistSelect(); 
         const mbInput = document.getElementById('setting-max-blanks');
         if (mbInput) mbInput.value = Logic.getMaxBlanks();
 
@@ -1053,6 +1050,8 @@ const Logic = {
                 }
             }
         } catch(err){}
+
+        Logic.refreshPlaylistSelect(); 
     },
     searchSongGoogle: () => {
         if (!Logic.state.song) return;
@@ -1774,7 +1773,7 @@ const Editor = {
         const pageSongs = filtered.slice(startIndex, startIndex + PAGE_SIZE);
 
         pageSongs.forEach(s => { 
-            const langLabel = s.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${songLangText(song.lang)}</span>` : '';
+            const langLabel = s.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${songLangText(s.lang)}</span>` : '';
             const isChecked = Editor.selectedSongIds.has(s.id);
             const item = document.createElement('div'); 
             item.className = "list-item-compact"; 
