@@ -1733,6 +1733,7 @@
       "id": "s1782714479458",
       "title": "青春修煉手冊",
       "artist": "TFBOYS",
+      "lang": "zh",
       "lyrics": [
         "跟著我左手右手一個慢動作",
         "右手左手慢動作重播",
@@ -1792,8 +1793,7 @@
         "",
         "男子漢 沒有什麼輸不起",
         "正太修煉成功的秘笈"
-      ],
-      "lang": "zh"
+      ]
     },
     {
       "id": "s1782714582426",
@@ -3044,6 +3044,7 @@
       "id": "s1782721478678",
       "title": "想唱就唱",
       "artist": "TFBOYS",
+      "lang": "zh",
       "lyrics": [
         "推開夜的天窗 對流星說願望",
         "給我一雙翅膀 能夠接近太陽",
@@ -3058,8 +3059,7 @@
         "想唱就唱 要唱得漂亮",
         "就算這舞台多空曠",
         "總有一天能看到 揮舞的螢光棒"
-      ],
-      "lang": "zh"
+      ]
     },
     {
       "id": "s1790674234621",
@@ -11775,6 +11775,7 @@
       "id": "s1791428925232",
       "title": "Picture to Burn",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "State the obvious",
         "I didn't get my perfect fantasy",
@@ -11814,13 +11815,13 @@
         "You're a redneck heartbreak who's really bad at lying",
         "So watch me strike a match on all my wasted time",
         "As far as I'm concerned, you're just another picture to burn"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791429135175",
       "title": "Teardrops on My Guitar",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Drew looks at me",
         "I fake a smile so he won't see",
@@ -11862,13 +11863,13 @@
         "He's the song in the car I keep singing, don't know why I do",
         "He's the time taken up, but there's never enough",
         "And he's all that I need to fall into"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791429522056",
       "title": "Our Song",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I was riding shotgun with my hair undone",
         "In the front seat of his car",
@@ -11929,13 +11930,13 @@
         "In the front seat of his car",
         "I grabbed a pen and an old napkin",
         "And I wrote down our song"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791429990375",
       "title": "Fearless",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "There's somethin' 'bout the way",
         "The street looks when it's just rained",
@@ -11971,13 +11972,13 @@
         "But you pull me in and I'm a little more brave",
         "It's the first kiss, it's flawless, really somethin'",
         "It's fearless"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791430316966",
       "title": "Fifteen",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "You take a deep breath and you walk through the doors",
         "It's the morning of your very first day",
@@ -12036,13 +12037,13 @@
         "And you just might find who you're supposed to be",
         "I didn't know who I was supposed to be",
         "At fifteen"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791430526741",
       "title": "Love Story",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "We were both young when I first saw you",
         "I close my eyes and the flashback starts",
@@ -12098,13 +12099,13 @@
         "I love you and that's all I really know",
         "I talked to your dad, go pick out a white dress",
         "It's a love story, baby, just say \"Yes\""
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791430780151",
       "title": "Hey Stephen",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Hey Stephen, I know looks can be deceiving",
         "But I know I saw a light in you",
@@ -12152,13 +12153,13 @@
         "Why I should be the one you choose",
         "All those other girls, well, they're beautiful",
         "But would they write a song for you?"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791431160652",
       "title": "White Horse",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Say you're sorry, that face of an angel",
         "Comes out just when you need it to",
@@ -12207,13 +12208,13 @@
         "And it's too late for you and your white horse",
         "Now it's too late for you and your white horse",
         "To catch me now"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791431523092",
       "title": "You Belong With Me",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "You're on the phone with your girlfriend, she's upset",
         "She's going off about something that you said",
@@ -12273,13 +12274,13 @@
         "",
         "Have you ever thought, just maybe",
         "You belong with me"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791431670486",
       "title": "Breathe",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I see your face in my mind as I drive away",
         "'Cause none of us thought it was gonna end that way",
@@ -12314,13 +12315,13 @@
         "Hope you know it's not easy, easy for me",
         "It's 2 A.M, feeling like I just lost a friend",
         "Hope you know this ain't easy, easy for me"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791431878508",
       "title": "The Way I Loved You",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "He is sensible and so incredible",
         "And all my single friends are jealous",
@@ -12377,13 +12378,13 @@
         "It's a roller coaster kind of rush",
         "And I never knew I could feel that much",
         "And that's the way I loved you"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791436133135",
       "title": "Forever& Always",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Once upon a time",
         "I believe it was a Tuesday when I caught your eye",
@@ -12452,46 +12453,45 @@
         "'Cause I was there when you said forever and always",
         "You didn’t mean it baby",
         "You said forever and always"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791436510559",
       "title": "The Best Day",
       "artist": "Taylor Swift",
       "lyrics": [
-        "I’m five years old it’s getting cold I’ve got my big coat on",
+        "I'm five years old it's getting cold I've got my big coat on",
         "I hear your laugh and look up smiling at you I run and run",
         "Past the pumpkin patch and the tractor rides look now the sky is gold",
         "I hug your legs and fall asleep on the way home",
         "",
-        "I don’t know why all the trees change in the fall",
-        "But I know you’re not scared of anything at all",
+        "I don't know why all the trees change in the fall",
+        "But I know you're not scared of anything at all",
         "Don't know if Snow White's house is near or far away",
         "But I know I had the best day with you today",
         "",
-        "I’m thirteen now and don’t know how my friends could be so mean",
+        "I'm thirteen now and don't know how my friends could be so mean",
         "I come home crying and you hold me tight and grab the keys",
         "And we drive and drive until we found a town far enough away",
-        "And we talk and window shop till I’ve forgotten all their names",
+        "And we talk and window shop till I've forgotten all their names",
         "",
-        "I don’t know who I’m gonna talk to now at school",
-        "But I know I’m laughing on the car ride home with you",
-        "Don’t know how long it’s gonna take to feel ok",
+        "I don't know who I'm gonna talk to now at school",
+        "But I know I'm laughing on the car ride home with you",
+        "Don't know how long it's gonna take to feel ok",
         "But I know I had the best day with you today",
         "",
         "I have an excellent father",
         "His strength is making me stronger",
         "God smiles on my little brother",
-        "Inside and out he’s better than I am",
+        "Inside and out he's better than I am",
         "",
         "I grew up in a pretty house and I had space to run",
         "And I had the best days with you",
         "",
         "There is a video I found from back when I was three",
-        "You set up a paint set in the kitchen and you’re talking to me",
-        "It’s the age of princesses and pirate ships and the seven dwarfs",
-        "Daddy’s smart and you’re the prettiest lady in the whole wide world",
+        "You set up a paint set in the kitchen and you're talking to me",
+        "It's the age of princesses and pirate ships and the seven dwarfs",
+        "Daddy's smart and you're the prettiest lady in the whole wide world",
         "",
         "Now I know why all the trees change in the fall",
         "I know you were on my side even when I was wrong",
@@ -12499,7 +12499,7 @@
         "For staying back and watching me shine",
         "",
         "And I didn't know if you knew",
-        "So I’m taking this chance to say",
+        "So I'm taking this chance to say",
         "That I had the best day with you today"
       ],
       "lang": "en"
@@ -12508,6 +12508,7 @@
       "id": "s1791436646798",
       "title": "Change",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Well it’s a sad picture, the final blow hits you",
         "Somebody else gets what you wanted again",
@@ -12558,8 +12559,7 @@
         "Cause we never gave in",
         "And we’ll sing hallelujah, we sang hallelujah",
         "Hallelujah"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791436904894",
@@ -12567,58 +12567,58 @@
       "artist": "Taylor Swift",
       "lyrics": [
         "I like the way you sound in the morning",
-        "We’re on the phone and without a warning",
+        "We're on the phone and without a warning",
         "I realize your laugh is the best sound I have ever heard",
         "",
-        "I like the way I can’t keep my focus",
-        "I watch you talk, you didn’t notice",
+        "I like the way I can't keep my focus",
+        "I watch you talk, you didn't notice",
         "I hear the words but all I can think is we should be together",
         "",
         "Every time you smile, I smile",
-        "And every time you shine, I’ll shine for you",
+        "And every time you shine, I'll shine for you",
         "",
-        "I’m feeling you baby",
-        "Don’t be afraid to jump then fall, jump then fall into me",
-        "Baby I’m never gonna leave you",
+        "I'm feeling you baby",
+        "Don't be afraid to jump then fall, jump then fall into me",
+        "Baby I'm never gonna leave you",
         "Say that you wanna be with me too",
-        "'Cause I’m gonna stay through it all so jump then fall",
+        "'Cause I'm gonna stay through it all so jump then fall",
         "",
         "Well I like the way your hair falls in your face",
         "You got the keys to me, I love each freckle on your face",
-        "I’ve never been so wrapped up honey",
-        "I like the way you’re everything I’ve ever wanted",
+        "I've never been so wrapped up honey",
+        "I like the way you're everything I've ever wanted",
         "",
         "I had time to think it over",
         "And all I can say is come closer",
         "Take a deep breath and jump then fall into me",
         "",
         "'Cause every time you smile, I smile",
-        "And every time you shine, I’ll shine for you",
+        "And every time you shine, I'll shine for you",
         "",
-        "I’m feeling you baby",
-        "Don’t be afraid to jump then fall, jump then fall into me",
-        "Baby I’m never gonna leave you",
+        "I'm feeling you baby",
+        "Don't be afraid to jump then fall, jump then fall into me",
+        "Baby I'm never gonna leave you",
         "Say that you wanna be with me too",
-        "'Cause I’m gonna stay through it all so jump then fall",
+        "'Cause I'm gonna stay through it all so jump then fall",
         "",
-        "The bottom’s gonna drop out from under our feet",
-        "I’ll catch you, I’ll catch you",
-        "When people say things that bring you to your knees, I’ll catch you",
-        "The time is gonna come when you’re so mad you could cry",
-        "But I’ll hold you through the night until you smile",
+        "The bottom's gonna drop out from under our feet",
+        "I'll catch you, I'll catch you",
+        "When people say things that bring you to your knees, I'll catch you",
+        "The time is gonna come when you're so mad you could cry",
+        "But I'll hold you through the night until you smile",
         "",
         "I need you baby",
-        "Don’t be afraid please jump then fall, jump then fall into me",
-        "Baby I’m never gonna leave you",
+        "Don't be afraid please jump then fall, jump then fall into me",
+        "Baby I'm never gonna leave you",
         "Say that you wanna be with me too",
-        "'Cause I’m gonna stay through it all so jump then fall",
+        "'Cause I'm gonna stay through it all so jump then fall",
         "Jump then fall baby, jump then fall into me, into me",
         "",
         "And every time you smile, I smile",
-        "And every time you shine, I’ll shine",
-        "And every time you’re here",
-        "Baby I’ll show you",
-        "I’ll show you you can jump then fall",
+        "And every time you shine, I'll shine",
+        "And every time you're here",
+        "Baby I'll show you",
+        "I'll show you you can jump then fall",
         "Jump then fall, jump then fall into me, into me"
       ],
       "lang": "en"
@@ -12627,6 +12627,7 @@
       "id": "s1791437059391",
       "title": "Superstar",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "This is wrong but",
         "I can’t help but feel like",
@@ -12668,13 +12669,13 @@
         "I’m invisible and everyone knows who you are",
         "And you’ll never see you sing me to sleep",
         "Every night from the radio"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791437183790",
       "title": "Today Was A Fairytale",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Today was a fairytale",
         "You were the prince",
@@ -12728,13 +12729,13 @@
         "It’s beating in my chest",
         "Did you feel it?",
         "I can’t put this down"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791437374680",
       "title": "You All Over Me",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Once the last drop of rain has dried off the pavement",
         "Shouldn't I find a stain, but I never do",
@@ -12784,13 +12785,13 @@
         "And I watched a part of myself die",
         "'Cause no amount of freedom gets you clean",
         "I’ve still got you all over me"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791437580078",
       "title": "Mr. Perfectly Fine",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Mr. perfect face",
         "Mr. here to stay",
@@ -12871,13 +12872,13 @@
         "",
         "Mr. look me in the eye and tell me you would never go away",
         "You said you'd never go away"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791437792293",
       "title": "Mine",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "You were in college, working part-time waiting tables",
         "Left a small town, never looked back",
@@ -12939,13 +12940,13 @@
         "We're gonna make it now",
         "And I can see it",
         "I can see it now"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791437901110",
       "title": "Sparks Fly",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "The way you move is like a full on rainstorm",
         "And I'm a house of cards",
@@ -12997,13 +12998,13 @@
         "Won't you whisper soft and slow",
         "I'm captivated by you, baby",
         "Like a fireworks show"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791438087861",
       "title": "Back To December",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I'm so glad you made time to see me",
         "How's life? Tell me how's your family",
@@ -13058,13 +13059,13 @@
         "",
         "I'd go back in time and change it, but I can't",
         "So if the chain is on your door, I understand"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791438267583",
       "title": "Speak Now",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I am not the kind of girl",
         "Who should be rudely barging in on a white veil occasion",
@@ -13133,13 +13134,13 @@
         "Baby, I didn't say my vows",
         "So glad you were around",
         "When they said, \"Speak now\""
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791438385926",
       "title": "Dear John",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Long were the nights when",
         "My days once revolved around you",
@@ -13196,13 +13197,13 @@
         "Don't you think I was too young to be messed with?",
         "The girl in the dress wrote you a song",
         "You should've known"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791438584468",
       "title": "Mean",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "You, with your words like knives and swords",
         "And weapons that you use against me",
@@ -13253,13 +13254,13 @@
         "All you are is mean",
         "And a liar, and pathetic, and alone in life",
         "And mean, and mean"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791438786141",
       "title": "The Story Of Us",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I used to think one day we'd tell the story of us",
         "How we met and the sparks flew instantly",
@@ -13316,13 +13317,13 @@
         "",
         "So many things that you wish I knew",
         "But the story of us might be ending soon"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791438989616",
       "title": "Never Grow Up",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Your little hand's wrapped around my finger",
         "And it's so quiet in the world tonight",
@@ -13391,13 +13392,13 @@
         "Oh, I don't wanna grow up",
         "Wish I'd never grown up",
         "It could still be simple"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791439117295",
       "title": "Enchanted",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "There I was again tonight",
         "Forcing laughter, faking smiles",
@@ -13451,13 +13452,13 @@
         "",
         "Please don't be in love with someone else",
         "Please don't have somebody waiting on you"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791439484916",
       "title": "Better Than Revenge",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "The story starts when it was hot and it was summer and",
         "I had it all, I had him right there where I wanted him",
@@ -13524,13 +13525,13 @@
         "So you deserve some much applause",
         "'Cause you're so much better",
         "She took him faster than you could say, \"Sabotage\""
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791439657932",
       "title": "Last Kiss",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I still remember the look on your face",
         "Lit through the darkness at 1:58",
@@ -13582,13 +13583,13 @@
         "And something reminds you you wish you had stayed",
         "You can plan for a change in the weather and time",
         "But I never planned on you changing your mind"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791439881283",
       "title": "Long Live",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I said remember this moment",
         "In the back of my mind",
@@ -13667,13 +13668,13 @@
         "And long, long live the look on your face",
         "And bring on all the pretenders",
         "One day, we will be remembered"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791440104323",
       "title": "Ours",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Elevator buttons and morning air",
         "Strangers' silence makes me wanna take the stairs",
@@ -13726,13 +13727,13 @@
         "They can't take what's ours",
         "The stakes are high, the water's rough",
         "But this love is ours"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791440328756",
       "title": "Superman",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Tall, dark and Superman",
         "He puts papers in his briefcase and drives away",
@@ -13802,13 +13803,13 @@
         "I swear I'll be with you someday",
         "I'll be right here on the ground",
         "When you come back down"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791440470820",
       "title": "Castles Crumbling",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Once, I had an empire in a golden age",
         "I was held up so high, I used to be great",
@@ -13845,13 +13846,13 @@
         "Now they're screaming at the palace front gates, used to chant my name",
         "Now they're screaming that they hate me",
         "Never wanted you to hate me"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791445140951",
       "title": "Timeless",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Down the block, there's an antique shop",
         "And something in my head said, \"Stop,\" so I walked in",
@@ -13927,13 +13928,13 @@
         "I'm gonna love you when our hair is turning gray",
         "We'll have a cardboard box of photos of the life we've made",
         "And you'll say, \"Oh my, we really were timeless\""
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791446428934",
       "title": "I Bet You Think About Me",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "3 AM and I'm still awake, I'll bet you're just fine",
         "Fast asleep in your city that's better than mine",
@@ -13991,13 +13992,13 @@
         "I bet you think about me when you say",
         "\"Oh my God, she's insane, she wrote a song about me\"",
         "I bet you think about me"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791447028234",
       "title": "All Too Well",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I walked through the door with you, the air was cold",
         "But something 'bout it felt like home somehow",
@@ -14107,13 +14108,13 @@
         "I still remember the first fall of snow",
         "And how it glistened as it fell",
         "I remember it all too well"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791447586414",
       "title": "Red",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Loving him is like",
         "Driving a new Maserati down a dead end street",
@@ -14160,13 +14161,13 @@
         "",
         "And that's why he's spinning 'round in my head",
         "Comes back to me, burning red"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791447928950",
       "title": "I Knew You Were Trouble",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Once upon a time",
         "A few mistakes ago",
@@ -14228,13 +14229,13 @@
         "Or her",
         "Or anyone",
         "Or anything"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791448122638",
       "title": "22",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "It feels like a perfect night to dress up like hipsters",
         "And make fun of our exes",
@@ -14274,13 +14275,13 @@
         "It feels like one of those nights",
         "You look like bad news",
         "I gotta have you, I gotta have you"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791448233981",
       "title": "Stay Stay Stay",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I'm pretty sure we almost broke up last night",
         "I threw my phone across the room at you",
@@ -14322,13 +14323,13 @@
         "And I'll be loving you for quite some time",
         "No one else is gonna love me when I get mad, mad, mad",
         "So I think that it's best if we both stay, stay, stay"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791448362316",
       "title": "Holy Ground",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I was reminiscing just the other day",
         "While having coffee all alone and Lord, it took me away",
@@ -14369,13 +14370,13 @@
         "Like you were in this room",
         "But I don't wanna dance",
         "If I'm not dancing with you"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791448579332",
       "title": "Everything Has Changed",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "All I knew",
         "This morning when I woke",
@@ -14450,13 +14451,13 @@
         "All my days, I'll know your face",
         "All I know since yesterday",
         "Is everything has changed"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791448707653",
       "title": "Starlight",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I said, \"Oh my, what a marvelous tune\"",
         "It was the best night, never would forget how we moved",
@@ -14499,13 +14500,13 @@
         "Ooh, ooh dancing with me",
         "Ooh, ooh we could get married",
         "Have ten kids and teach 'em how to dream"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791448952564",
       "title": "Begin Again",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Took a deep breath in the mirror",
         "He didn't like it when I wore high heels",
@@ -14559,13 +14560,13 @@
         "And for the first time",
         "What's past is past",
         ""
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791449166436",
       "title": "Nothing New",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "They tell you while you're young",
         "\"Girls, go out and have your fun\"",
@@ -14616,13 +14617,13 @@
         "But I wonder if they'll miss me once they drive me out",
         "I wake up in the middle of the night",
         "And I can feel time moving"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791450073443",
       "title": "Message In A Bottle",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I know that you like me",
         "And it's kinda frightening",
@@ -14672,13 +14673,13 @@
         "How is it in London?",
         "Where were you while I'm wondering",
         "If I'll ever see you again?"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791451292691",
       "title": "The Very First Night",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "And so it goes",
         "Every weekend, this same party",
@@ -14732,13 +14733,13 @@
         "I wish that we could go back in time",
         "And I’d say to you",
         "“I miss you like it was the very first night”"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791451439346",
       "title": "Welcome To New York",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Walkin' through a crowd, the village is aglow",
         "Kaleidoscope of loud heartbeats under coats",
@@ -14776,13 +14777,13 @@
         "Like any real love, it's ever-changing",
         "Like any true love, it drives you crazy",
         "But you know you wouldn't change anything, anything, anything"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791451658259",
       "title": "Blank Space",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Nice to meet you, where you been?",
         "I could show you incredible things",
@@ -14864,13 +14865,13 @@
         "",
         "Boys only want love if it's torture",
         "Don't say I didn't, say I didn't warn ya"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791451843530",
       "title": "Style",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Midnight",
         "You come and pick me up, no headlights",
@@ -14905,13 +14906,13 @@
         "He says, \"What you heard is true, but I",
         "Can't stop thinking 'bout you\" and I",
         "I said, \"I've been there too a few times\""
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791451952009",
       "title": "Wildest Dreams",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "He said, \"Let's get out of this town",
         "Drive out of the city, away from the crowds\"",
@@ -14955,13 +14956,13 @@
         "Someday when you leave me",
         "I bet these memories",
         "Follow you around"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791452137778",
       "title": "How You Get The Girl",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Stand there like a ghost",
         "Shaking from the rain",
@@ -15005,13 +15006,13 @@
         "Remind me how it used to be",
         "Pictures in frames of kisses on cheeks",
         "And say you want me"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791452278050",
       "title": "Clean",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "The drought was the very worst",
         "When the flowers that we'd grown together died of thirst",
@@ -15044,13 +15045,13 @@
         "Just because you're clean, don't mean you don't miss it",
         "Ten months older, I won't give in",
         "Now that I'm clean, I'm never gonna risk it"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791452436370",
       "title": "New Romantics",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "We're all bored",
         "We're all so tired of everything",
@@ -15115,13 +15116,13 @@
         "Please take me dancing, and",
         "Please leave me stranded",
         "It's so romantic"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791452557353",
       "title": "Now That We Don't Talk",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "You went to a party",
         "I heard from everybody",
@@ -15173,13 +15174,13 @@
         "Just like I had been when you were chasing me",
         "Guess this is how it has to be",
         "Now that we don't talk"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791452762601",
       "title": "…Ready For It?",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Knew he was a killer first time that I saw him",
         "Wonder how many girls he had loved and left haunted",
@@ -15227,13 +15228,13 @@
         "Are you ready for it?",
         "",
         "Baby, let the games begin"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791452950105",
       "title": "Don’t Blame Me",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Don't blame me, love made me crazy",
         "If it doesn't, you ain't doing it right",
@@ -15280,13 +15281,13 @@
         "Every time you're, every time you're loving me",
         "Trip of my life, oh",
         "Every time you're, every time you're touching me"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791453090249",
       "title": "Delicate",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "This ain't for the best",
         "My reputation's never been worse, so",
@@ -15352,13 +15353,13 @@
         "Are you ever dreaming of me?",
         "Sometimes when I look into your eyes",
         "I pretend you're mine, all the damn time"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791453327859",
       "title": "Getaway Car",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "It was the best of times, the worst of crimes",
         "I struck a match and blew your mind",
@@ -15443,13 +15444,13 @@
         "I was crying in a getaway car",
         "I was dying in a getaway car",
         "Said goodbye in a getaway car"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791453496881",
       "title": "This Is Why We Can't Have Nice Things",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "It was so nice throwing big parties",
         "Jump into the pool from the balcony",
@@ -15494,13 +15495,13 @@
         "Had to listen to all this drama",
         "And here's to you",
         "'Cause forgiveness is a nice thing to do"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791767241168",
       "title": "Call It What You Want",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "My castle crumbled overnight",
         "I brought a knife to a gunfight",
@@ -15553,13 +15554,13 @@
         "\"You don't need to save me",
         "But would you run away with me?\"",
         "Yes"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791767552399",
       "title": "Cruel Summer",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "Fever dream high in the quiet of the night",
         "You know that I caught it",
@@ -15611,13 +15612,13 @@
         "And I screamed, \"For whatever it's worth",
         "I love you, ain't that the worst thing you ever heard?\"",
         "He looks up, grinning like a devil"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791767826887",
       "title": "Lover",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "We could leave the Christmas lights up",
         "‘Til January",
@@ -15668,13 +15669,13 @@
         "And you’ll save all your dirtiest jokes for me",
         "And at every table, I’ll save you a seat",
         "Lover"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791768101350",
       "title": "I Think He Knows",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "I think he knows",
         "His footprints on the sidewalk",
@@ -15741,13 +15742,13 @@
         "I whisper in the dark",
         "Where we gonna go?",
         "I think he knows"
-      ],
-      "lang": "en"
+      ]
     },
     {
       "id": "s1791768344030",
       "title": "Paper Rings",
       "artist": "Taylor Swift",
+      "lang": "en",
       "lyrics": [
         "The moon is high like your friends were",
         "The night that we ﬁrst met",
@@ -15841,6 +15842,1191 @@
         "In picture frames",
         "In all my dreams",
         "You’re the one I want"
+      ]
+    },
+    {
+      "id": "s1793867836728",
+      "title": "Cornelia Street",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "We were in the backseat",
+        "Drunk on something stronger than the drinks in the bar",
+        "I rent a place on Cornelia Street,",
+        "I say casually in the car",
+        "",
+        "We were a fresh page on the desk",
+        "Filling in the blanks as we go",
+        "As if the streetlights pointed in an arrowhead",
+        "Leading us home",
+        "",
+        "And I hope I never lose you",
+        "Hope it never ends",
+        "I'd never walk Cornelia Street again",
+        "",
+        "That's the kind of heartbreak",
+        "Time could never mend",
+        "I'd never walk Cornelia Street again",
+        "",
+        "And baby I get mystiﬁed by how this city screams your name",
+        "And baby I'm so terriﬁed of if you ever walk away",
+        "I'd never walk Cornelia Street again",
+        "",
+        "Windows ﬂung right open",
+        "Autumn air, jacket 'round my shoulders is yours",
+        "We bless the rains on Cornelia Street",
+        "Memorize the creaks in the ﬂoor",
+        "",
+        "Back when we were card sharks",
+        "Playing games",
+        "I thought you were leading me on",
+        "I packed my bags, left Cornelia Street",
+        "Before you even knew I was gone",
+        "",
+        "But then you called",
+        "Showed your hand",
+        "I turned around before I hit the tunnel",
+        "Sat on the roof, you and I",
+        "",
+        "And I hope I never lose you",
+        "Hope it never ends",
+        "I'd never walk Cornelia Street again",
+        "",
+        "That's the kind of heartbreak",
+        "Time could never mend",
+        "I'd never walk Cornelia Street again",
+        "",
+        "And baby I get mystiﬁed by how this city screams your name",
+        "And baby I'm so terriﬁed of if you ever walk away",
+        "I'd never walk Cornelia Street again",
+        "",
+        "You hold my hand",
+        "On the street",
+        "Walk me back to that apartment",
+        "Years ago we were just inside",
+        "",
+        "Barefoot in the kitchen",
+        "Sacred new beginnings",
+        "That became my religion",
+        "Listen"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793868080703",
+      "title": "Death By A Thousand Cuts",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "Saying goodbye is death by a thousand cuts",
+        "Flashbacks waking me up",
+        "I get drunk but it's not enough",
+        "'Cause the morning comes",
+        "And you're not my baby",
+        "",
+        "I look through the windows of this love",
+        "Even though we boarded them up",
+        "Chandelier's still flickering here",
+        "'Cause I can't pretend it's ok when it's not",
+        "It's death by a thousand cuts",
+        "",
+        "I dress to kill my time",
+        "I take the long way home",
+        "I ask the traffic lights if it'll be all right",
+        "They say 'I don't know'",
+        "",
+        "And what once was ours",
+        "Is no one's now",
+        "I see you everywhere",
+        "The only thing we share",
+        "is this small town",
+        "",
+        "You said it was a great love",
+        "One for the ages",
+        "But if the story's over",
+        "Why am I still writing pages?",
+        "",
+        "'Cause saying goodbye is death by a thousand cuts",
+        "Flashbacks waking me up",
+        "I get drunk but it's not enough",
+        "'Cause the morning comes",
+        "And you're not my baby",
+        "",
+        "I look through the windows of this love",
+        "Even though we boarded them up",
+        "Chandelier's still flickering here",
+        "'Cause I can't pretend it's ok when it's not",
+        "It's death by a thousand cuts",
+        "",
+        "My heart, my hips, my body, my love",
+        "Trying to find a part of me that you didn't touch",
+        "Gave up on me like I was a bad drug",
+        "Now I'm searching for signs in a haunted club",
+        "",
+        "Our songs, our films, United we stand",
+        "Our country",
+        "Guess it was a lawless land",
+        "Quiet my fears with the touch of your hand",
+        "Paper cut stings from our paper thin plans",
+        "",
+        "My time, my wine, my spirit, my trust",
+        "Trying to find a part of me you didn't take up",
+        "Gave you too much but it wasn't enough",
+        "But I'll be all right",
+        "It's just a thousand cuts"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793868501863",
+      "title": "London Boy",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "I love my hometown",
+        "As much as Motown",
+        "I love SoCal",
+        "And you know I love Springsteen",
+        "Faded blue jeans",
+        "Tennessee whiskey",
+        "",
+        "But something happened",
+        "I heard him laughing",
+        "I saw the dimples ﬁrst and then I heard the accent",
+        "They say home is where the heart is",
+        "But that's not where mine lives",
+        "",
+        "You know I love a London boy",
+        "I enjoy walking Camden Market in the afternoon",
+        "He likes my American smile",
+        "Like a child when our eyes meet",
+        "Darling, I fancy you",
+        "",
+        "Took me back to Highgate",
+        "Met all of his best mates",
+        "So I guess all the rumors are true",
+        "You know I love a London boy",
+        "Boy, I fancy you",
+        "",
+        "Now I love high tea",
+        "Stories from uni and the West End",
+        "You can ﬁnd me in the pub, we",
+        "Are watching rugby",
+        "With his school friends",
+        "",
+        "Show me a gray sky",
+        "A rainy cab ride",
+        "Babes, don't threaten me with a good time",
+        "They say home is where the heart is",
+        "But God I love the English",
+        "",
+        "You know I love a London boy",
+        "I enjoy nights in Brixton",
+        "Shoreditch in the afternoon",
+        "He likes my American smile",
+        "Like a child when our eyes meet",
+        "Darling I fancy you",
+        "",
+        "Took me back to Highgate",
+        "Met all of his best mates",
+        "So I guess all the rumors are true",
+        "You know I love a London boy",
+        "Boy, I fancy you",
+        "",
+        "So please show me Hackney",
+        "Doesn't have to be Louis V",
+        "Up on Bond Street",
+        "Just wanna be with you",
+        "",
+        "Stick with me, I'm your queen",
+        "Like a Tennessee Stella McCartney",
+        "On the Heath",
+        "Just wanna be with you",
+        "",
+        "You know I love a London boy",
+        "I enjoy walking Soho, drinking in the afternoon",
+        "He likes my American smile",
+        "Like a child when our eyes meet",
+        "Darling I fancy you",
+        "",
+        "Took me back to Highgate",
+        "Met all of his best mates",
+        "So I guess all the rumors are true",
+        "You know I love a London boy",
+        "Boy, I fancy you"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793868689822",
+      "title": "Afterglow",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "I blew things out of proportion",
+        "Now you're blue",
+        "Put you in jail for something you didn't do",
+        "I pinned your hands behind your back, oh",
+        "Thought I had reason to attack, but no",
+        "",
+        "Fighting with a true love",
+        "Is boxing with no gloves",
+        "Chemistry 'til it blows up, 'til there's no us",
+        "",
+        "Why'd I have to break what I love so much?",
+        "It's on your face",
+        "And I'm to blame",
+        "I need to say",
+        "",
+        "Hey, it's all me, in my head",
+        "I'm the one who burned us down",
+        "But it's not what I meant",
+        "Sorry that I hurt you",
+        "",
+        "I don't wanna do",
+        "I don't wanna do this to you",
+        "I don't wanna lose",
+        "I don't wanna lose this with you",
+        "",
+        "I need to say",
+        "Hey, it's all me, just don't go",
+        "Meet me in the afterglow",
+        "",
+        "It's so excruciating to see you low",
+        "Just want to lift you up and not let you go",
+        "This ultraviolet morning light below",
+        "Tells me this love is worth the ﬁght, oh",
+        "",
+        "I lived like an island",
+        "Punished you with silence",
+        "Went off like sirens, just crying",
+        "",
+        "Why'd I have to break what I love so much?",
+        "It’s on your face",
+        "Don’t walk away",
+        "I need to say",
+        "",
+        "Hey, it's all me, in my head",
+        "I'm the one who burned us down",
+        "But it's not what I meant",
+        "Sorry that I hurt you",
+        "",
+        "I don't wanna do",
+        "I don't wanna do this to you",
+        "I don't wanna lose",
+        "I don't wanna lose this with you",
+        "",
+        "I need to say",
+        "Hey, it's all me, just don't go",
+        "Meet me in the afterglow",
+        "",
+        "Tell me that you're still mine",
+        "Tell me that we'll be just ﬁne",
+        "Even when I lose my mind",
+        "I need to say",
+        "",
+        "Tell me that it's not my fault",
+        "Tell me that I'm all you want",
+        "Even when I break your heart",
+        "I need to say"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793868889438",
+      "title": "Daylight",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "My love was as cruel as the cities I lived in",
+        "Everyone looked worse in the light",
+        "There are so many lines that I've crossed unforgiven",
+        "I'll tell you the truth but never goodbye",
+        "",
+        "I don't wanna look at anything else now that I saw you",
+        "I don't wanna think of anything else now that I thought of you",
+        "I've been sleeping so long in a twenty year dark night",
+        "And now I see daylight",
+        "I only see daylight",
+        "",
+        "Luck of the draw only draws the unlucky",
+        "And so I became the butt of the joke",
+        "I wounded the good and I trusted the wicked",
+        "Clearing the air, I breathed in the smoke",
+        "",
+        "Maybe you ran with the wolves and refused to settle down",
+        "Maybe I stormed out of every single room in this town",
+        "Threw out our cloaks and our daggers because it's morning now",
+        "It's brighter now, now",
+        "",
+        "I don't wanna look at anything else now that I saw you",
+        "I don't wanna think of anything else now that I thought of you",
+        "I've been sleeping so long in a twenty year dark night",
+        "And now I see daylight",
+        "I only see daylight",
+        "",
+        "And I can still see it all in my mind",
+        "All of you, all of me intertwined",
+        "I once believed love would be black and white",
+        "But it's golden",
+        "",
+        "And I can still see it all in my head",
+        "Back and forth from New York",
+        "Sneaking in your bed",
+        "I once believed love would be burning red",
+        "But it's golden",
+        "Like daylight",
+        "",
+        "I don't wanna look at anything else now that I saw you",
+        "I could never look away",
+        "I don't wanna think of anything else now that I thought of you",
+        "Things will never be the same",
+        "I've been sleeping so long in a twenty year dark night",
+        "And now I see daylight",
+        "I only see daylight",
+        "",
+        "Like daylight",
+        "It’s golden",
+        "Like daylight",
+        "You gotta step into the daylight",
+        "And let it go",
+        "Just let it go",
+        "Let it go"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793869234550",
+      "title": "cardigan",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "Vintage tee, brand new phone",
+        "High heels on cobblestones",
+        "When you are young, they assume you know nothing",
+        "",
+        "Sequin smile, black lipstick",
+        "Sensual politics",
+        "When you are young, they assume you know nothing",
+        "",
+        "But I knew you",
+        "Dancing in your Levis",
+        "Drunk under a streetlight, I",
+        "",
+        "I knew you",
+        "Hand under my sweatshirt",
+        "Baby, kiss it better, I",
+        "",
+        "And when I felt like I was an old cardigan",
+        "Under someone's bed",
+        "You put me on and said I was your favorite",
+        "",
+        "A friend to all is a friend to none",
+        "Chase two girls, lose the one",
+        "When you are young, they assume you know nothing",
+        "",
+        "But I knew you",
+        "Playing hide-and-seek and",
+        "Giving me your weekends, I",
+        "",
+        "I knew you",
+        "Your heartbeat on the High Line",
+        "Once in 20 lifetimes, I",
+        "",
+        "And when I felt like I was an old cardigan",
+        "Under someone's bed",
+        "You put me on and said I was your favorite",
+        "",
+        "To kiss in cars and downtown bars",
+        "Was all we needed",
+        "You drew stars around my scars",
+        "But now I'm bleeding",
+        "",
+        "'Cause I knew you",
+        "Stepping on the last train",
+        "Marked me like a bloodstain, I",
+        "",
+        "I knew you",
+        "Tried to change the ending",
+        "Peter losing Wendy, I",
+        "",
+        "I knew you",
+        "Leaving like a father",
+        "Running like water, I",
+        "And when you are young, they assume you know nothing",
+        "",
+        "But I knew you'd linger like a tattoo kiss",
+        "I knew you'd haunt all of my what-ifs",
+        "The smell of smoke would hang around this long",
+        "'Cause I knew everything when I was young",
+        "",
+        "I knew I'd curse you for the longest time",
+        "Chasing shadows in the grocery line",
+        "I knew you'd miss me once the thrill expired",
+        "And you'd be standing in my front porch light",
+        "And I knew you'd come back to me"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793869525766",
+      "title": "the 1",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "I'm doing good, I'm on some new shit",
+        "Been saying \"yes\" instead of \"no\"",
+        "I thought I saw you at the bus stop, I didn't though",
+        "",
+        "I hit the ground running each night",
+        "I hit the Sunday matinée",
+        "You know the greatest films of all time were never made",
+        "",
+        "I guess you never know, never know",
+        "And if you wanted me, you really should've showed",
+        "And if you never bleed, you're never gonna grow",
+        "And it's alright now",
+        "",
+        "But we were something, don't you think so?",
+        "Roaring 20s, tossing pennies in the pool",
+        "And if my wishes came true",
+        "It would've been you",
+        "",
+        "In my defense, I have none",
+        "For never leaving well enough alone",
+        "But it would've been fun",
+        "If you would've been the one",
+        "",
+        "I have this dream you're doing cool shit",
+        "Having adventures on your own",
+        "You meet some woman on the internet and take her home",
+        "",
+        "We never painted by the numbers, baby",
+        "But we were making it count",
+        "You know the greatest loves of all time are over now",
+        "",
+        "I guess you never know, never know",
+        "And it's another day waking up alone",
+        "",
+        "But we were something, don't you think so?",
+        "Roaring 20s, tossing pennies in the pool",
+        "And if my wishes came true",
+        "It would've been you",
+        "",
+        "In my defense, I have none",
+        "For never leaving well enough alone",
+        "But it would've been fun",
+        "If you would've been the one",
+        "",
+        "I persist and resist the temptation to ask you",
+        "If one thing had been different",
+        "Would everything be different today?",
+        "",
+        "We were something, don't you think so?",
+        "Rosé flowing with your chosen family",
+        "And it would've been sweet",
+        "If it could've been me",
+        "",
+        "In my defense, I have none",
+        "For digging up the grave another time",
+        "But it would've been fun",
+        "If you would've been the one"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793869695534",
+      "title": "the last great american dynasty",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "Rebekah rode up on the afternoon train, it was sunny",
+        "Her saltbox house on the coast took her mind off St. Louis",
+        "Bill was the heir to the Standard Oil name and money",
+        "And the town said, \"How did a middle-class divorcée do it?\"",
+        "",
+        "The wedding was charming, if a little gauche",
+        "There's only so far new money goes",
+        "They picked out a home and called it \"Holiday House\"",
+        "",
+        "Their parties were tasteful, if a little loud",
+        "The doctor had told him to settle down",
+        "It must have been her fault his heart gave out",
+        "And they said",
+        "",
+        "There goes the last great American dynasty",
+        "Who knows, if she never showed up, what could've been",
+        "There goes the maddest woman this town has ever seen",
+        "She had a marvelous time ruining everything",
+        "",
+        "Rebekah gave up on the Rhode Island set forever",
+        "Flew in all her Bitch Pack friends from the city",
+        "Filled the pool with champagne and swam with the big names",
+        "And blew through the money on the boys and the ballet",
+        "And losing on card game bets with Dali",
+        "And they said",
+        "",
+        "There goes the last great American dynasty",
+        "Who knows, if she never showed up, what could've been",
+        "There goes the most shameless woman this town has ever seen",
+        "She had a marvelous time ruining everything",
+        "",
+        "They say she was seen on occasion",
+        "Pacing the rocks, staring out at the midnight sea",
+        "And in a feud with her neighbor",
+        "She stole his dog and dyed it key lime green",
+        "",
+        "50 years is a long time",
+        "Holiday House sat quietly on that beach",
+        "Free of women with madness, their men and bad habits",
+        "And then it was bought by me",
+        "",
+        "Who knows, if I never showed up, what could've been",
+        "There goes the loudest woman this town has ever seen",
+        "I had a marvelous time ruining everything"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793870176061",
+      "title": "exile",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "I can see you standing, honey",
+        "With his arms around your body",
+        "Laughing, but the joke's not funny at all",
+        "",
+        "And it took you five whole minutes",
+        "To pack us up and leave me with it",
+        "Holding all this love out here in the hall",
+        "",
+        "I think I've seen this film before",
+        "And I didn't like the ending",
+        "You're not my homeland anymore",
+        "So, what am I defending now?",
+        "",
+        "You were my town",
+        "Now I'm in exile, seeing you out",
+        "I think I've seen this film before",
+        "",
+        "I can see you staring, honey",
+        "Like he's just your understudy",
+        "Like you'd get your knuckles bloody for me",
+        "",
+        "Second, third, and hundredth chances",
+        "Balancing on breaking branches",
+        "Those eyes add insults to injury",
+        "",
+        "I think I've seen this film before",
+        "And I didn't like the ending",
+        "I'm not your problem anymore",
+        "So, who am I offending now?",
+        "",
+        "You were my crown",
+        "Now I'm in exile, seeing you out",
+        "I think I've seen this film before",
+        "So I'm leaving out the side door",
+        "",
+        "So step right out, there is no amount",
+        "Of crying, I can do for you",
+        "All this time",
+        "",
+        "We always walked a very thin line",
+        "You didn't even hear me out",
+        "You never gave a warning sign (I gave so many signs)",
+        "All this time",
+        "",
+        "I never learned to read your mind (never learned to read my mind)",
+        "I couldn't turn things around (you never turned things around)",
+        "'Cause you never gave a warning sign (I gave so many signs)",
+        "You didn't even see the signs"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793870632086",
+      "title": "august",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "Salt air, and the rust on your door",
+        "I never needed anything more",
+        "Whispers of, \"Are you sure?\"",
+        "\"Never have I ever before\"",
+        "",
+        "But I can see us lost in the memory",
+        "August slipped away into a moment in time",
+        "'Cause it was never mine",
+        "",
+        "And I can see us twisted in bedsheets",
+        "August sipped away like a bottle of wine",
+        "'Cause you were never mine",
+        "",
+        "Your back beneath the sun",
+        "Wishing I could write my name on it",
+        "Will you call when you're back at school?",
+        "I remember thinking I had you",
+        "",
+        "But I can see us lost in the memory",
+        "August slipped away into a moment in time",
+        "'Cause it was never mine",
+        "",
+        "And I can see us twisted in bedsheets",
+        "August sipped away like a bottle of wine",
+        "'Cause you were never mine",
+        "",
+        "Back when we were still changing for the better",
+        "Wanting was enough",
+        "For me, it was enough",
+        "",
+        "To live for the hope of it all",
+        "Cancel plans just in case you'd call",
+        "And say you meet me behind the mall",
+        "So much for summer love and saying, \"Us\"",
+        "'Cause you weren't mine to lose",
+        "You weren't mine to lose",
+        "",
+        "But I can see us lost in the memory",
+        "August slipped away into a moment in time",
+        "'Cause it was never mine",
+        "",
+        "And I can see us twisted in bedsheets",
+        "August sipped away like a bottle of wine",
+        "'Cause you were never mine",
+        "",
+        "But do you remember?",
+        "Remember when I pulled up and said, \"Get in the car\"",
+        "And then canceled my plans, just in case you'd call",
+        "",
+        "Back when I was living for the hope of it all, for the hope of it all",
+        "\"Meet me behind the mall\""
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793870960293",
+      "title": "betty",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "Betty, I won't make assumptions",
+        "About why you switched your homeroom",
+        "But I think it's 'cause of me",
+        "",
+        "Betty, one time, I was riding on my skateboard",
+        "When I passed your house",
+        "It's like I couldn't breathe",
+        "",
+        "You heard the rumors from Inez",
+        "You can't believe a word she says most times",
+        "But this time, it was true",
+        "The worst thing that I ever did",
+        "Was what I did to you",
+        "",
+        "But if I just showed up at your party",
+        "Would you have me?",
+        "Would you want me?",
+        "Would you tell me to go fuck myself?",
+        "Or lead me to the garden?",
+        "",
+        "In the garden, would you trust me",
+        "If I told you it was just a summer thing?",
+        "I'm only seventeen, I don't know anything",
+        "But I know I miss you",
+        "",
+        "Betty, I know where it all went wrong",
+        "Your favorite song was playing from",
+        "The far side of the gym",
+        "",
+        "I was nowhere to be found",
+        "I hate the crowds, you know that",
+        "Plus, I saw you dance with him",
+        "",
+        "You heard the rumors from Inez",
+        "You can't believe a word she says most times",
+        "But this time, it was true",
+        "The worst thing that I ever did",
+        "Was what I did to you",
+        "",
+        "But if I just showed up at your party",
+        "Would you have me? Would you want me?",
+        "Would you tell me to go fuck myself?",
+        "Or lead me to the garden?",
+        "",
+        "In the garden, would you trust me",
+        "If I told you it was just a summer thing?",
+        "I'm only seventeen, I don't know anything",
+        "But I know I miss you",
+        "",
+        "I was walking home on broken cobblestones",
+        "Just thinking of you when she pulled up like",
+        "A figment of my worst intentions",
+        "",
+        "She said \"James, get in, let's drive\"",
+        "Those days turned into nights",
+        "Slept next to her, but",
+        "I dreamt of you all summer long",
+        "",
+        "Betty, I'm here on your doorstep",
+        "And I planned it out for weeks now",
+        "But it's finally sinking in",
+        "",
+        "Betty, right now is the last time",
+        "I can dream about what happens when",
+        "You see my face again",
+        "The only thing I wanna do",
+        "Is make it up to you",
+        "",
+        "So I showed up at your party",
+        "Yeah, I showed up at your party",
+        "Will you have me? Will you love me?",
+        "Will you kiss me on the porch",
+        "In front of all your stupid friends?",
+        "",
+        "If you kiss me, will it be just like I dreamed it?",
+        "Will it patch your broken wings?",
+        "I'm only seventeen, I don't know anything",
+        "But I know I miss you",
+        "",
+        "Standing in your cardigan",
+        "Kissing in my car again",
+        "Stopped at a streetlight",
+        "You know I miss you"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793871131709",
+      "title": "hoax",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "My only one",
+        "My smoking gun",
+        "My eclipsed sun",
+        "This has broken me down",
+        "",
+        "My twisted knife",
+        "My sleepless night",
+        "My win-less fight",
+        "This has frozen my ground",
+        "",
+        "Stood on the cliffside",
+        "Screaming, \"Give me a reason\"",
+        "Your faithless love's the only hoax",
+        "I believe in",
+        "",
+        "Don't want no other shade of blue",
+        "But you",
+        "No other sadness in the world would do",
+        "",
+        "My best laid plan",
+        "Your sleight of hand",
+        "My barren land",
+        "I am ash from your fire",
+        "",
+        "Stood on the cliffside",
+        "Screaming \"Give me a reason\"",
+        "Your faithless love's the only hoax",
+        "I believe in",
+        "",
+        "Don't want no other shade of blue",
+        "But you",
+        "No other sadness in the world would do",
+        "",
+        "You know I left a part of me back in New York",
+        "You knew the hero died, so what's the movie for?",
+        "You knew it still hurts underneath my scars",
+        "From when they pulled me apart",
+        "",
+        "You knew the password, so I let you in the door",
+        "You knew you won, so what's the point of keeping score?",
+        "You knew it still hurts underneath my scars",
+        "From when they pulled me apart",
+        "",
+        "But what you did was just as dark",
+        "Darling, this was just as hard",
+        "As when they pulled me apart",
+        "",
+        "My only one",
+        "My kingdom come undone",
+        "My broken drum",
+        "You have beaten my heart",
+        "",
+        "Don't want no other shade of blue",
+        "But you",
+        "No other sadness in the world would do"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793871600605",
+      "title": "willow",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "I'm like the water when your ship rolled in that night",
+        "Rough on the surface but you cut through like a knife",
+        "And if it was an open-shut case",
+        "I never would've known from that look on your face",
+        "Lost in your current like a priceless wine",
+        "",
+        "The more that you say",
+        "The less I know",
+        "Wherever you stray, I follow",
+        "I'm begging for you to take my hand",
+        "Wreck my plans",
+        "That's my man",
+        "",
+        "Life was a willow and it bent right to your wind",
+        "Head on the pillow, I could feel you sneaking in",
+        "As if you were a mythical thing",
+        "Like you were a trophy or a champion ring",
+        "And there was one prize I'd cheat to win",
+        "",
+        "The more that you say",
+        "The less I know",
+        "Wherever you stray, I follow",
+        "I'm begging for you to take my hand",
+        "Wreck my plans",
+        "That's my man",
+        "",
+        "You know that my train could take you home",
+        "Anywhere else is hollow",
+        "I'm begging for you to take my hand",
+        "Wreck my plans",
+        "That's my man",
+        "",
+        "Life was a willow and it bent right to your wind",
+        "They count me out time and time again",
+        "Life was a willow and it bent right to your wind",
+        "But I come back stronger than a 90's trend",
+        "",
+        "Wait for the signal and I'll meet you after dark",
+        "Show me the places where the others gave you scars",
+        "Now this is an open-shut case",
+        "Guess I should've known from the look on your face",
+        "Every bait and switch was a work of art"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793871744028",
+      "title": "champagne problems",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "You booked the night train for a reason",
+        "So you could sit there in this hurt",
+        "Bustling crowds or silent sleepers",
+        "You're not sure which is worse",
+        "",
+        "Because I",
+        "Dropped your hand while dancing",
+        "Left you out there standing",
+        "Crestfallen on the landing",
+        "Champagne problems",
+        "",
+        "Your mom's ring in your pocket",
+        "My picture in your wallet",
+        "Your heart was glass, I dropped it",
+        "Champagne problems",
+        "",
+        "You told your family for a reason",
+        "You couldn't keep it in",
+        "Your sister splashed out on the bottle",
+        "Now no one's celebrating",
+        "",
+        "Dom Pérignon, you brought it",
+        "No crowd of friends applauded",
+        "Your hometown skeptics called it",
+        "Champagne problems",
+        "",
+        "You had a speech, you're speechless",
+        "Love slipped beyond your reaches",
+        "And I couldn't give a reason",
+        "Champagne problems",
+        "",
+        "Your Midas touch on the Chevy door",
+        "November flush and your flannel cure",
+        "\"This dorm was once a madhouse\"",
+        "I made a joke, \"Well, it's made for me\"",
+        "",
+        "How evergreen, our group of friends",
+        "Don't think we'll say that word again",
+        "And soon they'll have the nerve to deck the halls",
+        "That we once walked through",
+        "",
+        "One for the money, two for the show",
+        "I never was ready, so I watch you go",
+        "Sometimes you just don't know the answer",
+        "'Til someone's on their knees and asks you",
+        "",
+        "\"She would've made such a lovely bride",
+        "What a shame she's fucked in the head, \" they said",
+        "But you'll find the real thing instead",
+        "She'll patch up your tapestry that I shred and",
+        "",
+        "Hold your hand while dancing",
+        "Never leave you standing",
+        "Crestfallen on the landing",
+        "With champagne problems",
+        "",
+        "Your mom's ring in your pocket",
+        "Her picture in your wallet",
+        "And you won't remember all my",
+        "Champagne problems"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793872226396",
+      "title": "dorothea",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "Hey Dorothea",
+        "Do you ever stop and think about me?",
+        "When we were younger",
+        "Down in the park",
+        "Honey, making a lark of the misery",
+        "",
+        "You got shiny friends since you left town",
+        "A tiny screen's the only place I see you now",
+        "And I got nothing but well wishes for ya",
+        "",
+        "This place is the same as it ever was",
+        "But you won't like it that way",
+        "",
+        "It's never too late to come back to my side",
+        "The stars in your eyes shined brighter in Tupelo",
+        "And if you're ever tired of being known for who you know",
+        "You know, you'll always know me",
+        "",
+        "Dorothea",
+        "You're a queen selling dreams",
+        "Selling make up and magazines",
+        "From you I'd buy anything",
+        "",
+        "Hey Dorothea",
+        "Do you ever stop and think about me?",
+        "When it was calmer",
+        "Skipping the prom",
+        "Just to piss off your mom",
+        "And her pageant schemes",
+        "",
+        "And damn, Dorothea",
+        "They all wanna be ya",
+        "But are you still the same soul I met under the bleachers? Well",
+        "I guess I'll never know",
+        "And you'll go on with the show"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793872394644",
+      "title": "ivy",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "How's one to know?",
+        "I'd meet you where the spirit meets the bones",
+        "In a faith forgotten land",
+        "",
+        "In from the snow",
+        "Your touch brought forth an incandescent glow",
+        "Tarnished but so grand",
+        "",
+        "And the old widow goes to the stone every day",
+        "But I don't, I just sit here and wait",
+        "Grieving for the living",
+        "",
+        "Oh, goddamn",
+        "My pain fits in the palm of your freezing hand",
+        "Taking mine, but it's been promised to another",
+        "Oh, I can't",
+        "Stop you putting roots in my dreamland",
+        "My house of stone, your ivy grows",
+        "And now I'm covered in you",
+        "",
+        "I wish to know",
+        "The fatal flaw that makes you long to be",
+        "Magnificently cursed",
+        "",
+        "He's in the room",
+        "Your opal eyes are all I wish to see",
+        "He wants what's only yours",
+        "",
+        "Oh, goddamn",
+        "My pain fits in the palm of your freezing hand",
+        "Taking mine, but it's been promised to another",
+        "Oh, I can't",
+        "Stop you putting roots in my dreamland",
+        "My house of stone, your ivy grows",
+        "And now I'm covered",
+        "",
+        "Clover blooms in the fields",
+        "Spring breaks loose, the time is near",
+        "What would he do if he found us out?",
+        "",
+        "Crescent moon, coast is clear",
+        "Spring breaks loose, but so does fear",
+        "He's gonna burn this house to the ground",
+        "",
+        "How's one to know?",
+        "I'd live and die for moments that we stole",
+        "On begged and borrowed time",
+        "",
+        "So tell me to run",
+        "Or dare to sit and watch what we'll become",
+        "And drink my husband's wine",
+        "",
+        "Oh, goddamn",
+        "My pain fits in the palm of your freezing hand",
+        "Taking mine, but it's been promised to another",
+        "Oh, I can't",
+        "Stop you putting roots in my dreamland",
+        "My house of stone, your ivy grows",
+        "And now I'm covered in you",
+        "",
+        "So yeah, it's a fire",
+        "It's a goddamn blaze in the dark",
+        "And you started it",
+        "You started it",
+        "",
+        "So yeah, it's a war",
+        "It's the goddamn fight of my life",
+        "And you started it",
+        "You started it"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793872566155",
+      "title": "long story short",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "Fatefully",
+        "I tried to pick my battles 'til the battle picked me",
+        "Misery",
+        "Like the war of words I shouted in my sleep",
+        "",
+        "And you passed right by",
+        "I was in the alley, surrounded on all sides",
+        "The knife cuts both ways",
+        "If the shoe fits, walk in it 'til your high heels break",
+        "",
+        "And I fell from the pedestal",
+        "Right down the rabbit hole",
+        "Long story short, it was a bad time",
+        "",
+        "Pushed from the precipice",
+        "Clung to the nearest lips",
+        "Long story short, it was the wrong guy",
+        "Now I'm all about you",
+        "",
+        "Actually",
+        "I always felt I must look better in the rear view",
+        "Missing me",
+        "At the golden gates they once held the keys to",
+        "",
+        "When I dropped my sword",
+        "I threw it in the bushes and knocked on your door",
+        "And we live in peace",
+        "But if someone comes at us",
+        "This time, I'm ready",
+        "",
+        "'Cause I fell from the pedestal",
+        "Right down the rabbit hole",
+        "Long story short, it was a bad time",
+        "",
+        "Pushed from the precipice",
+        "Clung to the nearest lips",
+        "Long story short, it was the wrong guy",
+        "Now I'm all about you",
+        "",
+        "No more keeping score",
+        "Now I just keep you warm",
+        "No more tug of war",
+        "Now I just know there's more",
+        "",
+        "No more keeping score",
+        "Now I just keep you warm",
+        "And my waves meet your shore",
+        "Ever and evermore",
+        "",
+        "Past me",
+        "I wanna tell you not to get lost in these petty things",
+        "Your nemeses",
+        "Will defeat themselves before you get the chance to swing",
+        "",
+        "And he's passing by",
+        "Rare as the glimmer of a comet in the sky",
+        "And he feels like home",
+        "If the shoe fits, walk in it everywhere you go",
+        "",
+        "And I fell from the pedestal",
+        "Right down the rabbit hole",
+        "Long story short, it was a bad time",
+        "",
+        "Pushed from the precipice",
+        "Climbed right back up the cliff",
+        "Long story short, I survived"
+      ],
+      "lang": "en"
+    },
+    {
+      "id": "s1793872764772",
+      "title": "right where you left me",
+      "artist": "Taylor Swift",
+      "lyrics": [
+        "Friends break up, friends get married",
+        "Strangers get born, strangers get buried",
+        "Trends change, rumors fly through new skies",
+        "But I'm right where you left me",
+        "",
+        "Matches burn after the other",
+        "Pages turn and stick to each other",
+        "Wages earned and lessons learned",
+        "But I, I'm right where you left me",
+        "",
+        "Help, I'm still at the restaurant",
+        "Still sitting in a corner I haunt",
+        "Cross-legged in the dim light",
+        "They say, \"What a sad sight\"",
+        "",
+        "I, I swear you could hear a hair pin drop",
+        "Right when I felt the moment stop",
+        "Glass shattered on the white cloth",
+        "Everybody moved on",
+        "",
+        "I, I stayed there",
+        "Dust collected on my pinned-up hair",
+        "They expected me to find somewhere",
+        "Some perspective, but I sat and stared",
+        "Right where you left me",
+        "",
+        "You left me no",
+        "You left me no choice but to stay here forever",
+        "",
+        "Did you ever hear about the girl who got frozen?",
+        "Time went on for everybody else, she won't know it",
+        "She's still 23 inside her fantasy",
+        "How it was supposed to be",
+        "",
+        "Did you hear about the girl who lives in delusion?",
+        "Break-ups happen every day, you don't have to lose it",
+        "She's still 23 inside her fantasy",
+        "And you're sitting in front of me",
+        "",
+        "At the restaurant, when I was still the one you want",
+        "Cross-legged in the dim light, everything was just right",
+        "I, I could feel the mascara run",
+        "You told me that you met someone",
+        "Glass shattered on the white cloth",
+        "Everybody moved on",
+        "",
+        "Help, I'm still at the restaurant",
+        "Still sitting in a corner I haunt",
+        "Cross-legged in the dim light",
+        "They say, \"What a sad sight\"",
+        "",
+        "I, I stayed there",
+        "Dust collected on my pinned-up hair",
+        "I'm sure that you got a wife out there",
+        "Kids and Christmas, but I'm unaware",
+        "'Cause I'm right where",
+        "",
+        "I cause no harm, mind my business",
+        "If our love died young, I can't bear witness",
+        "And it's been so long",
+        "But if you ever think you got it wrong",
+        "I'm right where you left me"
       ],
       "lang": "en"
     }
@@ -16241,7 +17427,25 @@
         "s1791767552399",
         "s1791767826887",
         "s1791768101350",
-        "s1791768344030"
+        "s1791768344030",
+        "s1793867836728",
+        "s1793868080703",
+        "s1793868501863",
+        "s1793868689822",
+        "s1793868889438",
+        "s1793869234550",
+        "s1793869525766",
+        "s1793869695534",
+        "s1793870176061",
+        "s1793870632086",
+        "s1793870960293",
+        "s1793871131709",
+        "s1793871600605",
+        "s1793871744028",
+        "s1793872226396",
+        "s1793872394644",
+        "s1793872566155",
+        "s1793872764772"
       ]
     },
     {
@@ -16636,963 +17840,23 @@
     }
   ],
   "st": {
-    "ok": 326,
-    "ch": 386,
+    "ok": 0,
+    "ch": 404,
     "sk": 0,
+    "ht": 0,
     "hist": [],
     "playedInRound": [
-      "s1790929010608",
-      "s1790931792142",
-      "s1782716265105",
-      "s1791168535344",
-      "s1790926532216",
-      "s1791188632031",
-      "s1791190515287",
-      "s1791356473895",
-      "s1791188214480",
-      "s1791188782688",
-      "s1790934706403",
-      "s1790934596171",
-      "s1782716173865",
-      "s1782720151799",
-      "s1791257897946",
-      "s1790926947369",
-      "s1791258821402",
-      "s1791189465407",
-      "s1791170041993",
-      "s1791168700850",
-      "s1791268847580",
-      "s1791170185753",
-      "s1791167692233",
-      "s1790906387792",
-      "s1790922705580",
-      "s1791168913273",
-      "s1790932862478",
-      "s1782721478678",
-      "s1790847731972",
-      "s1791268315228",
-      "s1790920972910",
-      "s1791170598089",
-      "s1791182974891",
-      "s1790931991486",
-      "s1791188344688",
-      "s1790927035257",
-      "s1791356916270",
-      "s1790935034124",
-      "s1790925331946",
-      "s1791182888963",
-      "s1790926274257",
-      "s1791189206224",
-      "s1790925665978",
-      "s1791264130991",
-      "s1791190229775",
-      "s1782720069727",
-      "s1782713952107",
-      "s1782714225082",
-      "s1790932718534",
-      "s1790907766871",
-      "s1791258290157",
-      "s1782714980722",
-      "s1791181250876",
-      "s1791191494278",
-      "s1782714134850",
-      "s1790847297860",
-      "s1790930645352",
-      "s1790934820563",
-      "s1791357081463",
-      "s1791182513123",
-      "s1791192061438",
-      "s1791170379857",
-      "s1791268447180",
-      "s1791186337473",
-      "s1791178701669",
-      "s1791359871702",
-      "s1782715362834",
-      "s1790913124155",
-      "s1782713820226",
-      "s1791355940127",
-      "s1791177057582",
-      "s1790923105427",
-      "s1791168145537",
-      "s1790926340729",
-      "s1782714479458",
-      "s1791187476392",
-      "s1791172064872",
-      "s1790920172150",
-      "s1791258455538",
-      "s1782714582426",
-      "s1791191091278",
-      "s1790921760805",
-      "s1782721167207",
-      "s1782714747913",
-      "s1791187758136",
-      "s1791267754836",
-      "s1782715588345",
-      "s1790928708479",
-      "s1791185932361",
-      "s1791257171900",
-      "s1790931102711",
-      "s1791190393783",
-      "s1791189020599",
-      "s1790931588358",
-      "s1782720537823",
-      "s1790926647633",
-      "s1790907602623",
-      "s1791180051245",
-      "s1791257996083",
-      "s1790927883713",
-      "s1790931707174",
-      "s1791181681091",
-      "s1790920339614",
-      "s1791266426888",
-      "s1791358165461",
-      "s1782715779081",
-      "s1791268050045",
-      "s1782716572953",
-      "s1791270192461",
-      "s1782720806511",
-      "s1790930507159",
-      "s1791181448436",
-      "s1790848445771",
-      "s1782720399311",
-      "s1791190650487",
-      "s1791270898795",
-      "s1791267005373",
-      "s1782716088233",
-      "s1791191243366",
-      "s1790929286176",
-      "s1790934364514",
-      "s1791270787523",
-      "s1782720861791",
-      "s1791269228804",
-      "s1791189309447",
-      "s1791251100561",
-      "s1791191695173",
-      "s1790847505013",
-      "s1790847608148",
-      "s1791178393070",
-      "s1791189623287",
-      "s1790929354136",
-      "s1791251215447",
-      "s1791181954379",
-      "s1791256957764",
-      "s1790928314569"
+      "s1791180051245"
     ],
     "usedMap": {
-      "s1790929010608": [
-        9,
-        10,
-        11
-      ],
-      "s1790931792142": [
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "s1782716265105": [
-        25,
-        26,
-        27
-      ],
-      "s1791168535344": [
-        15,
-        16,
-        17,
-        18
-      ],
-      "s1790926532216": [
-        6,
-        7,
-        8,
-        9
-      ],
-      "s1791188632031": [
-        9,
-        10,
-        11,
-        12
-      ],
-      "s1791190515287": [
-        23,
-        24,
-        25
-      ],
-      "s1791356473895": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1791188214480": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "s1791188782688": [
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
-      "s1790934706403": [
-        12,
-        13,
-        14,
-        15,
-        16
-      ],
-      "s1790934596171": [
-        15,
-        16,
-        17,
-        18,
-        19
-      ],
-      "s1782716173865": [
-        2,
-        3,
-        4
-      ],
-      "s1782720151799": [
-        7,
-        8,
-        9,
-        10
-      ],
-      "s1791257897946": [
-        9,
-        10,
-        11
-      ],
-      "s1790926947369": [
-        19,
-        20,
-        21,
-        22
-      ],
-      "s1791258821402": [
-        0,
-        1,
-        2
-      ],
-      "s1791189465407": [
-        9,
-        10,
-        11,
-        12,
-        13
-      ],
-      "s1791170041993": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1791168700850": [
-        6,
-        7,
-        8,
-        9
-      ],
-      "s1791268847580": [
-        22,
-        23,
-        24,
-        25
-      ],
-      "s1791170185753": [
-        9,
-        10,
-        11
-      ],
-      "s1791167692233": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1790906387792": [
-        0,
-        1,
-        2
-      ],
-      "s1790922705580": [
-        10,
-        11,
-        12,
-        13,
-        14
-      ],
-      "s1791168913273": [
-        16,
-        17,
-        18
-      ],
-      "s1790932862478": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "s1782721478678": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1790847731972": [
-        2,
-        3,
-        4,
-        5
-      ],
-      "s1791268315228": [
-        11,
-        12,
-        13
-      ],
-      "s1790920972910": [
-        8,
-        9,
-        10,
-        11
-      ],
-      "s1791170598089": [
-        7,
-        8,
-        9
-      ],
-      "s1791182974891": [
-        9,
-        10,
-        11,
-        12
-      ],
-      "s1790931991486": [
-        4,
-        5,
-        6
-      ],
-      "s1791188344688": [
-        5,
-        6,
-        7
-      ],
-      "s1790927035257": [
-        8,
-        9,
-        10,
-        11
-      ],
-      "s1791356916270": [
-        8,
-        9,
-        10
-      ],
-      "s1790935034124": [
-        40,
-        41,
-        42,
-        43,
-        44
-      ],
-      "s1790925331946": [
-        4,
-        5,
-        6,
-        7
-      ],
-      "s1791182888963": [
-        2,
-        3,
-        4,
-        5
-      ],
-      "s1790926274257": [
-        3,
-        4,
-        5,
-        6
-      ],
-      "s1791189206224": [
-        17,
-        18,
-        19
-      ],
-      "s1790925665978": [
-        16,
-        17,
-        18,
-        19,
-        20
-      ],
-      "s1791264130991": [
-        1,
-        2,
-        3
-      ],
-      "s1791190229775": [
-        17,
-        18,
-        19,
-        20
-      ],
-      "s1782720069727": [
-        7,
-        8,
-        9,
-        10,
-        11
-      ],
-      "s1782713952107": [
-        29,
-        30,
-        31
-      ],
-      "s1782714225082": [
-        17,
-        18,
-        19,
-        20
-      ],
-      "s1790932718534": [
-        12,
-        13,
-        14
-      ],
-      "s1790907766871": [
-        8,
-        9,
-        10,
-        11
-      ],
-      "s1791258290157": [
-        2,
-        3,
-        4
-      ],
-      "s1782714980722": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "s1791181250876": [
-        8,
-        9,
-        10,
-        11
-      ],
-      "s1791191494278": [
-        9,
-        10,
-        11,
-        12,
-        13
-      ],
-      "s1782714134850": [
-        7,
-        8,
-        9,
-        10
-      ],
-      "s1790847297860": [
-        6,
-        7,
-        8
-      ],
-      "s1790930645352": [
-        14,
-        15,
-        16,
-        17,
-        18
-      ],
-      "s1790934820563": [
-        8,
-        9,
-        10
-      ],
-      "s1791357081463": [
-        4,
-        5,
-        6
-      ],
-      "s1791182513123": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "s1791192061438": [
-        14,
-        15,
-        16,
-        17,
-        18
-      ],
-      "s1791170379857": [
-        16,
-        17,
-        18
-      ],
-      "s1791268447180": [
-        14,
-        15,
-        16,
-        17,
-        18
-      ],
-      "s1791186337473": [
-        13,
-        14,
-        15,
-        16
-      ],
-      "s1791178701669": [
-        12,
-        13,
-        14,
-        15
-      ],
-      "s1791359871702": [
-        0,
-        1,
-        2
-      ],
-      "s1782715362834": [
-        7,
-        8,
-        9
-      ],
-      "s1790913124155": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "s1782713820226": [
-        7,
-        8,
-        9,
-        10,
-        11
-      ],
-      "s1791355940127": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "s1791177057582": [
-        5,
-        6,
-        7
-      ],
-      "s1790923105427": [
-        12,
-        13,
-        14,
-        15
-      ],
-      "s1791168145537": [
-        9,
-        10,
-        11,
-        12
-      ],
-      "s1790926340729": [
-        7,
-        8,
-        9
-      ],
-      "s1782714479458": [
-        14,
-        15,
-        16,
-        17,
-        18
-      ],
-      "s1791187476392": [
-        7,
-        8,
-        9
-      ],
-      "s1791172064872": [
-        4,
-        5,
-        6,
-        7
-      ],
-      "s1790920172150": [
-        4,
-        5,
-        6,
-        7
-      ],
-      "s1791258455538": [
-        16,
-        17,
-        18,
-        19
-      ],
-      "s1782714582426": [
-        18,
-        19,
-        20,
-        21,
-        22
-      ],
-      "s1791191091278": [
-        14,
-        15,
-        16,
-        17,
-        18
-      ],
-      "s1790921760805": [
-        9,
-        10,
-        11
-      ],
-      "s1782721167207": [
-        6,
-        7,
-        8,
-        9
-      ],
-      "s1782714747913": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1791187758136": [
-        18,
-        19,
-        20,
-        21,
-        22
-      ],
-      "s1791267754836": [
-        21,
-        22,
-        23
-      ],
-      "s1782715588345": [
-        31,
-        32,
-        33,
-        34
-      ],
-      "s1790928708479": [
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "s1791185932361": [
-        6,
-        7,
-        8,
-        9
-      ],
-      "s1791257171900": [
-        10,
-        11,
-        12
-      ],
-      "s1790931102711": [
-        9,
-        10,
-        11,
-        12
-      ],
-      "s1791190393783": [
-        18,
-        19,
-        20
-      ],
-      "s1791189020599": [
-        2,
-        3,
-        4
-      ],
-      "s1790931588358": [
-        4,
-        5,
-        6
-      ],
-      "s1782720537823": [
-        2,
-        3,
-        4
-      ],
-      "s1790926647633": [
-        4,
-        5,
-        6
-      ],
-      "s1790907602623": [
-        10,
-        11,
-        12,
-        13
-      ],
       "s1791180051245": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "s1791257996083": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "s1790927883713": [
-        2,
-        3,
-        4,
-        5,
-        6
-      ],
-      "s1790931707174": [
-        15,
-        16,
-        17,
-        18
-      ],
-      "s1791181681091": [
-        5,
-        6,
-        7
-      ],
-      "s1790920339614": [
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1791266426888": [
+        10,
         11,
         12,
-        13,
-        14,
-        15
-      ],
-      "s1791358165461": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1782715779081": [
-        18,
-        19,
-        20,
-        21,
-        22
-      ],
-      "s1791268050045": [
-        22,
-        23,
-        24,
-        25,
-        26
-      ],
-      "s1782716572953": [
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "s1791270192461": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "s1782720806511": [
-        2,
-        3,
-        4,
-        5
-      ],
-      "s1790930507159": [
-        26,
-        27,
-        28
-      ],
-      "s1791181448436": [
-        2,
-        3,
-        4,
-        5,
-        6
-      ],
-      "s1790848445771": [
-        5,
-        6,
-        7
-      ],
-      "s1782720399311": [
-        12,
-        13,
-        14,
-        15
-      ],
-      "s1791190650487": [
-        35,
-        36,
-        37,
-        38,
-        39
-      ],
-      "s1791270898795": [
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1791267005373": [
-        3,
-        4,
-        5,
-        6
-      ],
-      "s1782716088233": [
-        0,
-        1,
-        2
-      ],
-      "s1791191243366": [
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "s1790929286176": [
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1790934364514": [
-        13,
-        14,
-        15
-      ],
-      "s1791270787523": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "s1782720861791": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "s1791269228804": [
-        5,
-        6,
-        7,
-        8,
-        9
-      ],
-      "s1791189309447": [
-        15,
-        16,
-        17,
-        18,
-        19
-      ],
-      "s1791251100561": [
-        9,
-        10,
-        11
-      ],
-      "s1791191695173": [
-        9,
-        10,
-        11
-      ],
-      "s1790847505013": [
-        9,
-        10,
-        11
-      ],
-      "s1790847608148": [
-        8,
-        9,
-        10
-      ],
-      "s1791178393070": [
-        7,
-        8,
-        9,
-        10
-      ],
-      "s1791189623287": [
-        4,
-        5,
-        6
-      ],
-      "s1790929354136": [
-        15,
-        16,
-        17,
-        18
-      ],
-      "s1791251215447": [
-        13,
-        14,
-        15,
-        16,
-        17
-      ],
-      "s1791181954379": [
-        7,
-        8,
-        9
-      ],
-      "s1791256957764": [
-        2,
-        3,
-        4,
-        5
-      ],
-      "s1790928314569": [
-        0,
-        1,
-        2,
-        3,
-        4
+        13
       ]
-    },
-    "ht": 36
+    }
   },
-  "tol": "你/妳\n哦/喔/噢\n他/她/它\n的/得/地\n秘/祕\n裡/裏\n計畫/計劃\n飢餓/饑餓\n濕/溼\n凶/兇\n豔/艷\n癡/痴\n台/臺\n了解/瞭解\n注定/註定",
+  "tol": "你/妳\n哦/喔/噢\n他/她/它\n的/得/地\n秘/祕\n裡/裏\n計畫/計劃\n飢餓/饑餓\n濕/溼\n凶/兇\n豔/艷\n癡/痴\n台/臺\n了解/瞭解\n注定/註定\n絕不/決不\n作夢/做夢",
   "mb": 15
 }
