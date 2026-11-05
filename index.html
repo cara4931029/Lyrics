@@ -137,6 +137,7 @@
                     <div id="game-artist" style="color:var(--sub-text);font-size:0.9rem"></div>
                 </div>
                 <div>
+                    <button class="btn btn-aux btn-small" onclick="Logic.searchSongGoogle()" style="margin-right:6px">🔍 搜尋原曲</button>
                     <button class="btn btn-aux btn-small" onclick="Logic.restart()" style="margin-right:6px">重新開始</button>
                     <button class="btn btn-aux btn-small" onclick="Logic.exitToSetup()">重新選範圍</button>
                 </div>
@@ -1053,6 +1054,15 @@ const Logic = {
             }
         } catch(err){}
     },
+    searchSongGoogle: () => {
+        if (!Logic.state.song) return;
+        const t = (Logic.state.song.title || '').trim();
+        const a = (Logic.state.song.artist || '').trim();
+        const query = `${t} ${a}`.trim();
+        if (query) {
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+        }
+    },
     exitToSetup: () => { 
         document.getElementById('game-play-area').style.display='none'; 
         document.getElementById('game-setup').style.display='block'; 
@@ -1764,7 +1774,7 @@ const Editor = {
         const pageSongs = filtered.slice(startIndex, startIndex + PAGE_SIZE);
 
         pageSongs.forEach(s => { 
-            const langLabel = s.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${songLangText(s.lang)}</span>` : '';
+            const langLabel = s.lang ? ` <span style="font-size:0.75rem;padding:1px 5px;background:#333;border-radius:3px;color:var(--primary-color)">${songLangText(song.lang)}</span>` : '';
             const isChecked = Editor.selectedSongIds.has(s.id);
             const item = document.createElement('div'); 
             item.className = "list-item-compact"; 
@@ -1975,7 +1985,7 @@ const Editor = {
     },
     deleteItem: (id) => { 
         if(confirm("確定刪除這首歌？")) { 
-            Data.saveSongs(Data.getSongs().filter(x => x.id !== id)); 
+            Data.saveSongs(Data.getSongs().filter(x => !ids.includes(x.id))); 
             const pls = Data.getPlaylists();
             pls.forEach(p => { if (p.songIds) p.songIds = p.songIds.filter(sid => sid !== id); });
             Data.savePlaylists(pls);
