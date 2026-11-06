@@ -854,6 +854,13 @@ const Data = {
                     return false;
                 }
 
+                if (hasLocalSongs) {
+                    const wantExport = confirm("【題庫更新提示】\n偵測到線上版本題庫（question.json）即將更新本地資料。\n\n是否要先匯出目前的本地 JSON 檔備份，以免被線上版本直接覆蓋？\n\n【確定】：先下載備份檔\n【取消】：不備份直接更新");
+                    if (wantExport) {
+                        Data.exportAll();
+                    }
+                }
+
                 Data.saveSongs(songs);
                 if (playlists && playlists.length > 0) {
                     Data.savePlaylists(playlists);
